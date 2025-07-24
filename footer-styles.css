@@ -1,0 +1,106 @@
+/* Footer specific styles to enhance appearance without breaking functionality */
+footer.enhanced-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+}
+
+footer.enhanced-footer h4 {
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    color: black;
+}
+
+footer.enhanced-footer h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(to right, #004369, #1B7895);
+}
+
+footer.enhanced-footer .brand-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(to right, #004369, #1B7895);
+    color: white;
+    border-radius: 6px;
+}
+
+footer.enhanced-footer .contact-info a {
+    color: #212529;
+    transition: color 0.3s ease;
+}
+
+footer.enhanced-footer .contact-info a:hover {
+    color: #1B7895;
+    text-decoration: none;
+}
+
+footer.enhanced-footer .social-links a {
+    color: #212529;
+    transition: all 0.3s ease;
+}
+
+footer.enhanced-footer .social-links a:hover {
+    color: #1B7895;
+    transform: translateX(3px);
+}
+
+footer.enhanced-footer .service-links a {
+    color: #6c757d;
+    transition: all 0.3s ease;
+    padding: 4px 0;
+    display: inline-block;
+}
+
+footer.enhanced-footer .service-links a:hover {
+    color: #1B7895;
+    transform: translateX(3px);
+}
+
+footer.enhanced-footer .copyright {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+footer.enhanced-footer .copyright a {
+    color: #1B7895;
+    text-decoration: none;
+}
+
+footer.enhanced-footer .btn-client {
+    border: 1px solid #004369;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+footer.enhanced-footer .btn-client:hover {
+    background-color: #004369;
+    color: white !important;
+}
+
+footer.enhanced-footer .email-link {
+    font-weight: 500;
+    color: #004369;
+}
+
+footer.enhanced-footer .company-name {
+    font-weight: 600;
+    color: #004369;
+}
+
+@media (max-width: 767px) {
+    footer.enhanced-footer {
+        padding-top: 2.5rem;
+        padding-bottom: 2rem;
+    }
+
+    footer.enhanced-footer .col-section {
+        margin-bottom: 2rem;
+    }
+}

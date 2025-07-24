@@ -96,42 +96,53 @@
         }
         
         /* Client Reviews Section Styles */
-        .reviews-marquee {
+        .reviews-slider {
+            position: relative;
+            padding: 1rem 0;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .reviews-track {
             display: flex;
-            overflow-x: auto;
-            white-space: nowrap;
-            animation: reviewsMarquee 25s linear infinite;
-            padding: 1rem;
+            gap: 1.5rem;
+            width: max-content;
+            animation: slideReviews 30s linear infinite;
+            padding: 0.5rem 0;
         }
         
         .review-card {
             flex: 0 0 auto;
             width: 350px;
-            max-width: 90vw;
+            max-width: calc(100vw - 2rem);
+            height: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            overflow: hidden;
         }
         
-        @keyframes reviewsMarquee {
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        @keyframes slideReviews {
             0% {
                 transform: translateX(0);
             }
             100% {
-                transform: translateX(-1600px); /* Adjusted based on card width and count */
+                transform: translateX(calc(-350px * 4 - 6rem)); /* 4 cards + gaps */
             }
         }
         
-        /* Hide scrollbar for reviews marquee */
-        .reviews-marquee::-webkit-scrollbar {
-            display: none;
-        }
-        
-        .reviews-marquee {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        
         /* Responsive adjustments for reviews */
+        @media (max-width: 991px) {
+            .reviews-track {
+                animation-duration: 25s;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .reviews-marquee {
+            .reviews-track {
                 animation-duration: 20s;
             }
             .review-card {
@@ -140,11 +151,14 @@
         }
         
         @media (max-width: 576px) {
-            .reviews-marquee {
+            .reviews-track {
                 animation-duration: 15s;
             }
             .review-card {
-                width: 250px;
+                width: 280px;
+            }
+            .reviews-slider {
+                padding: 0.5rem 0;
             }
         }
         
@@ -227,7 +241,7 @@
                         <button class="btn btn-outline-light">Learn More</button>
                     </div>
                     <div class="col-lg-6">
-                        <img src="/assets/home/banner-big.png" alt="Real Estate Banner" class="img-fluid">
+                        <img src="assets/home/banner-big.png" alt="Real Estate Banner" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -247,7 +261,7 @@
                     <div class="col-md-6 col-lg-3">
                         <div class="card text-white bg-dark border border-secondary h-100 p-4 hover-card">
                             <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mb-4" style="width: 64px; height: 64px; border: 1px solid #2c2c2c;">
-                                <img src="/assets/home/features-1.png" alt="Feature 1" class="w-50 h-50">
+                                <img src="assets/home/features-1.png" alt="Feature 1" class="w-50 h-50">
                             </div>
                             <h3 class="h5 fw-bold mb-3">Premium Figma File Included</h3>
                             <p class="small">These files include all the design elements, layouts, and assets used in the WordPress theme, allowing for customization</p>
@@ -258,7 +272,7 @@
                     <div class="col-md-6 col-lg-3">
                         <div class="card text-white bg-dark border border-secondary h-100 p-4 hover-card">
                             <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mb-4" style="width: 64px; height: 64px; border: 1px solid #2c2c2c;">
-                                <img src="/assets/home/features-2.png" alt="Feature 2" class="w-50 h-50">
+                                <img src="assets/home/features-2.png" alt="Feature 2" class="w-50 h-50">
                             </div>
                             <h3 class="h5 fw-bold mb-3">One Click Demo Installation</h3>
                             <p class="small">No need to manually create pages or configure settings. Your site will look like the demo in minutes.</p>
@@ -269,7 +283,7 @@
                     <div class="col-md-6 col-lg-3">
                         <div class="card text-white bg-dark border border-secondary h-100 p-4 hover-card">
                             <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mb-4" style="width: 64px; height: 64px; border: 1px solid #2c2c2c;">
-                                <img src="/assets/home/features-3.png" alt="Feature 3" class="w-50 h-50">
+                                <img src="assets/home/features-3.png" alt="Feature 3" class="w-50 h-50">
                             </div>
                             <h3 class="h5 fw-bold mb-3">Top Notch Theme Performance</h3>
                             <p class="small">A high-performing theme is crucial for retaining visitors, improving search engine rankings, and enhancing overall site</p>
@@ -280,7 +294,7 @@
                     <div class="col-md-6 col-lg-3">
                         <div class="card text-white bg-dark border border-secondary h-100 p-4 hover-card">
                             <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mb-4" style="width: 64px; height: 64px; border: 1px solid #2c2c2c;">
-                                <img src="/assets/home/features-1.png" alt="Feature 4" class="w-50 h-50">
+                                <img src="assets/home/features-1.png" alt="Feature 4" class="w-50 h-50">
                             </div>
                             <h3 class="h5 fw-bold mb-3">Secure & Reliable Code</h3>
                             <p class="small">Built with modern coding standards and best practices to ensure your website is secure and performs optimally</p>
@@ -440,116 +454,118 @@
 
         <!-- Client Reviews Section -->
         <section id="client-reviews" class="py-5 bg-dark">
-            <div class="text-center mb-5">
-                <p class="text-primary small mb-2">Build With Incredible</p>
-                <h2 class="display-5 fw-bold mb-4">Good Clients Reviews</h2>
-            </div>
+            <div class="">
+                <div class="text-center mb-5">
+                    <p class="text-primary small mb-2">Build With Incredible</p>
+                    <h2 class="display-5 fw-bold mb-4">Good Clients Reviews</h2>
+                </div>
 
-            <div class="position-relative overflow-hidden">
-                <div class="reviews-marquee">
-                    <!-- Review Card 1 -->
-                    <div class="review-card bg-dark border border-secondary p-4 me-4">
-                        <div class="d-flex align-items-start mb-3">
-                            <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h5 class="mb-1">falguniconnect</h5>
-                                <p class="text-primary small">Customer Support</p>
+                <div class="reviews-slider">
+                    <div class="reviews-track">
+                        <!-- Review Card 1 -->
+                        <div class="review-card bg-dark border border-secondary p-4">
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <h5 class="mb-1">falguniconnect</h5>
+                                    <p class="text-primary small">Customer Support</p>
+                                </div>
+                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
                             </div>
-                            <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
+                            <p class="text-light fst-italic">"Theme is great, and support is even better, job well done."</p>
                         </div>
-                        <p class="text-light fst-italic">"Theme is great, and support is even better, job well done."</p>
-                    </div>
 
-                    <!-- Review Card 2 -->
-                    <div class="review-card bg-dark border border-secondary p-4 me-4">
-                        <div class="d-flex align-items-start mb-3">
-                            <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h5 class="mb-1">aaronburatti00</h5>
-                                <p class="text-primary small">Customer Support</p>
+                        <!-- Review Card 2 -->
+                        <div class="review-card bg-dark border border-secondary p-4">
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <h5 class="mb-1">aaronburatti00</h5>
+                                    <p class="text-primary small">Customer Support</p>
+                                </div>
+                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
                             </div>
-                            <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
+                            <p class="text-light fst-italic">"Really nice theme and excellent support from Sabbir Islam"</p>
                         </div>
-                        <p class="text-light fst-italic">"Really nice theme and excellent support from Sabbir Islam"</p>
-                    </div>
 
-                    <!-- Review Card 3 -->
-                    <div class="review-card bg-dark border border-secondary p-4 me-4">
-                        <div class="d-flex align-items-start mb-3">
-                            <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h5 class="mb-1">lukeduff00</h5>
-                                <p class="text-primary small">Customer Support</p>
+                        <!-- Review Card 3 -->
+                        <div class="review-card bg-dark border border-secondary p-4">
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <h5 class="mb-1">lukeduff00</h5>
+                                    <p class="text-primary small">Customer Support</p>
+                                </div>
+                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
                             </div>
-                            <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
+                            <p class="text-light fst-italic">"A brilliant theme, also the support is incredible. Sabbir has been a huge help."</p>
                         </div>
-                        <p class="text-light fst-italic">"A brilliant theme, also the support is incredible. Sabbir has been a huge help. Not only supporting me with theme issues but also general WP issues. i cant ask for more :)"</p>
-                    </div>
 
-                    <!-- Review Card 4 -->
-                    <div class="review-card bg-dark border border-secondary p-4 me-4">
-                        <div class="d-flex align-items-start mb-3">
-                            <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h5 class="mb-1">Saadi_Abdelm</h5>
-                                <p class="text-primary small">Customer Support</p>
+                        <!-- Review Card 4 -->
+                        <div class="review-card bg-dark border border-secondary p-4">
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <h5 class="mb-1">Saadi_Abdelm</h5>
+                                    <p class="text-primary small">Customer Support</p>
+                                </div>
+                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
                             </div>
-                            <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
+                            <p class="text-light fst-italic">"Great theme with excellent customization options and outstanding support!"</p>
                         </div>
-                        <p class="text-light fst-italic">"Great theme with excellent customization options and outstanding support!"</p>
-                    </div>
 
-                    <!-- Duplicate reviews for continuous scrolling -->
-                    <!-- Review Card 1 (duplicate) -->
-                    <div class="review-card bg-dark border border-secondary p-4 me-4">
-                        <div class="d-flex align-items-start mb-3">
-                            <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h5 class="mb-1">falguniconnect</h5>
-                                <p class="text-primary small">Customer Support</p>
+                        <!-- Duplicate reviews for continuous scrolling -->
+                        <!-- Review Card 1 (duplicate) -->
+                        <div class="review-card bg-dark border border-secondary p-4">
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <h5 class="mb-1">falguniconnect</h5>
+                                    <p class="text-primary small">Customer Support</p>
+                                </div>
+                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
                             </div>
-                            <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
+                            <p class="text-light fst-italic">"Theme is great, and support is even better, job well done."</p>
                         </div>
-                        <p class="text-light fst-italic">"Theme is great, and support is even better, job well done."</p>
-                    </div>
 
-                    <!-- Review Card 2 (duplicate) -->
-                    <div class="review-card bg-dark border border-secondary p-4 me-4">
-                        <div class="d-flex align-items-start mb-3">
-                            <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h5 class="mb-1">aaronburatti00</h5>
-                                <p class="text-primary small">Customer Support</p>
+                        <!-- Review Card 2 (duplicate) -->
+                        <div class="review-card bg-dark border border-secondary p-4">
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <h5 class="mb-1">aaronburatti00</h5>
+                                    <p class="text-primary small">Customer Support</p>
+                                </div>
+                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
                             </div>
-                            <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
+                            <p class="text-light fst-italic">"Really nice theme and excellent support from Sabbir Islam"</p>
                         </div>
-                        <p class="text-light fst-italic">"Really nice theme and excellent support from Sabbir Islam"</p>
-                    </div>
 
-                    <!-- Review Card 3 (duplicate) -->
-                    <div class="review-card bg-dark border border-secondary p-4 me-4">
-                        <div class="d-flex align-items-start mb-3">
-                            <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h5 class="mb-1">lukeduff00</h5>
-                                <p class="text-primary small">Customer Support</p>
+                        <!-- Review Card 3 (duplicate) -->
+                        <div class="review-card bg-dark border border-secondary p-4">
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <h5 class="mb-1">lukeduff00</h5>
+                                    <p class="text-primary small">Customer Support</p>
+                                </div>
+                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
                             </div>
-                            <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
+                            <p class="text-light fst-italic">"A brilliant theme, also the support is incredible. Sabbir has been a huge help."</p>
                         </div>
-                        <p class="text-light fst-italic">"A brilliant theme, also the support is incredible. Sabbir has been a huge help. Not only supporting me with theme issues but also general WP issues. i cant ask for more :)"</p>
-                    </div>
 
-                    <!-- Review Card 4 (duplicate) -->
-                    <div class="review-card bg-dark border border-secondary p-4 me-4">
-                        <div class="d-flex align-items-start mb-3">
-                            <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                            <div>
-                                <h5 class="mb-1">Saadi_Abdelm</h5>
-                                <p class="text-primary small">Customer Support</p>
+                        <!-- Review Card 4 (duplicate) -->
+                        <div class="review-card bg-dark border border-secondary p-4">
+                            <div class="d-flex align-items-start mb-3">
+                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
+                                <div>
+                                    <h5 class="mb-1">Saadi_Abdelm</h5>
+                                    <p class="text-primary small">Customer Support</p>
+                                </div>
+                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
                             </div>
-                            <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
+                            <p class="text-light fst-italic">"Great theme with excellent customization options and outstanding support!"</p>
                         </div>
-                        <p class="text-light fst-italic">"Great theme with excellent customization options and outstanding support!"</p>
                     </div>
                 </div>
             </div>
@@ -565,7 +581,7 @@
                                 FREQUENTLY<br>
                                 ASKED QUESTIONS
                             </h2>
-                            <p class="text-muted">ANSWERS TO COMMON QUERIES WE OFTEN RECEIVE</p>
+                            <p class="text-secondary">ANSWERS TO COMMON QUERIES WE OFTEN RECEIVE</p>
                             <div class="d-flex justify-content-end mt-4">
                                 <span class="bg-success text-dark px-4 py-2 rounded-pill fw-bold small">GET TO KNOW MORE</span>
                             </div>
@@ -578,7 +594,7 @@
                                     <span class="fw-medium fs-5">WHAT INDUSTRIES DO YOU SPECIALIZE IN?</span>
                                     <i class="fas fa-plus faq-icon"></i>
                                 </button>
-                                <div class="faq-answer py-3 text-muted d-none">
+                                <div class="faq-answer py-3 text-secondary d-none">
                                     I have experience working across various industries including but not limited to Technology, Healthcare, Fashion, Hospitality and Non Profit Organization.
                                 </div>
                             </div>
@@ -589,7 +605,7 @@
                                     <span class="fw-medium fs-5">WHAT IS YOUR TYPICAL PROJECT TIMELINE?</span>
                                     <i class="fas fa-plus faq-icon"></i>
                                 </button>
-                                <div class="faq-answer py-3 text-muted d-none">
+                                <div class="faq-answer py-3 text-secondary d-none">
                                     Project timelines vary depending on scope and complexity. Typically, small projects take 2-4 weeks, medium projects 4-8 weeks, and large projects 8-16 weeks.
                                 </div>
                             </div>
@@ -600,7 +616,7 @@
                                     <span class="fw-medium fs-5">DO YOU OFFER POST-LAUNCH SUPPORT OR MAINTENANCE?</span>
                                     <i class="fas fa-plus faq-icon"></i>
                                 </button>
-                                <div class="faq-answer py-3 text-muted d-none">
+                                <div class="faq-answer py-3 text-secondary d-none">
                                     Yes, we offer comprehensive post-launch support including bug fixes, updates, maintenance, and ongoing development support.
                                 </div>
                             </div>
@@ -611,7 +627,7 @@
                                     <span class="fw-medium fs-5">WHAT SOFTWARE AND TOOLS DO YOU USE FOR YOUR DESIGNS?</span>
                                     <i class="fas fa-plus faq-icon"></i>
                                 </button>
-                                <div class="faq-answer py-3 text-muted d-none">
+                                <div class="faq-answer py-3 text-secondary d-none">
                                     We use industry-standard tools including Figma, Adobe Creative Suite, Sketch, and various prototyping tools to deliver high-quality designs.
                                 </div>
                             </div>
@@ -622,7 +638,7 @@
                                     <span class="fw-medium fs-5">DO YOUR DESIGNS ARE TAILORED TO EACH CLIENT?</span>
                                     <i class="fas fa-plus faq-icon"></i>
                                 </button>
-                                <div class="faq-answer py-3 text-muted d-none">
+                                <div class="faq-answer py-3 text-secondary d-none">
                                     Every design is custom-tailored to meet your specific business needs, brand identity, and target audience requirements.
                                 </div>
                             </div>
@@ -633,7 +649,7 @@
                                     <span class="fw-medium fs-5">HOW DO I UPGRADE, DOWNGRADE, OR CANCEL?</span>
                                     <i class="fas fa-plus faq-icon"></i>
                                 </button>
-                                <div class="faq-answer py-3 text-muted d-none">
+                                <div class="faq-answer py-3 text-secondary d-none">
                                     You can easily manage your subscription through your account dashboard. Contact our support team for assistance with any changes to your plan.
                                 </div>
                             </div>
@@ -660,6 +676,10 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-placeholder').innerHTML = data;
+                // Trigger header initialization after header content is loaded
+                if (typeof initHeaderScroll === 'function') {
+                    setTimeout(initHeaderScroll, 100); // Small delay to ensure DOM is updated
+                }
             })
             .catch(error => console.error('Error loading header:', error));
             
@@ -672,9 +692,57 @@
             .catch(error => console.error('Error loading footer:', error));
     </script>
     
-    <!-- FAQ Accordion Script -->
+    <!-- Client Reviews and FAQ Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Reviews slider functionality
+            const reviewsTrack = document.querySelector('.reviews-track');
+            const reviewsSlider = document.querySelector('.reviews-slider');
+            
+            if (reviewsTrack && reviewsSlider) {
+                // Pause animation on hover
+                reviewsSlider.addEventListener('mouseenter', () => {
+                    reviewsTrack.style.animationPlayState = 'paused';
+                });
+                
+                // Resume animation on mouse leave
+                reviewsSlider.addEventListener('mouseleave', () => {
+                    reviewsTrack.style.animationPlayState = 'running';
+                });
+                
+                // Ensure the animation calculation is correct for responsive displays
+                const updateReviewsAnimation = () => {
+                    const cards = reviewsTrack.querySelectorAll('.review-card');
+                    if (cards.length > 0) {
+                        const cardWidth = cards[0].offsetWidth;
+                        const cardGap = 24; // 1.5rem in pixels
+                        const totalWidth = (cardWidth + cardGap) * (cards.length / 2); // Half the cards (original set)
+                        
+                        // Update the animation using inline style instead of modifying stylesheet rules
+                        reviewsTrack.style.animation = 'none'; // Reset animation
+                        setTimeout(() => {
+                            // Create a style element with our custom keyframe
+                            const styleEl = document.createElement('style');
+                            styleEl.textContent = `
+                                @keyframes slideReviews {
+                                    0% { transform: translateX(0); }
+                                    100% { transform: translateX(-${totalWidth}px); }
+                                }
+                            `;
+                            document.head.appendChild(styleEl);
+                            
+                            // Re-apply the animation
+                            reviewsTrack.style.animation = 'slideReviews 30s linear infinite';
+                        }, 10);
+                    }
+                };
+                
+                // Call once on load and on window resize
+                updateReviewsAnimation();
+                window.addEventListener('resize', updateReviewsAnimation);
+            }
+            
+            // FAQ functionality
             // Track active FAQ item (starts at 0, first item is active by default)
             let activeFaqIndex = 0;
             

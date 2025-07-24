@@ -42,32 +42,45 @@ function initHeaderScroll() {
     const header = document.getElementById('main-header');
     const headerSpacer = document.getElementById('header-spacer');
 
-    // Set initial height for the header spacer
+    // Set initial height for the header spacer only if all elements exist
     function setHeaderSpacerHeight() {
-        const topBarHeight = topBar.offsetHeight;
-        const headerHeight = header.offsetHeight;
-        headerSpacer.style.height = (topBarHeight + headerHeight) + 'px';
+        if (topBar && header && headerSpacer) {
+            const topBarHeight = topBar.offsetHeight;
+            const headerHeight = header.offsetHeight;
+            headerSpacer.style.height = (topBarHeight + headerHeight) + 'px';
+        }
     }
 
-    setHeaderSpacerHeight();
+    // Only call if elements exist
+    if (topBar && header && headerSpacer) {
+        setHeaderSpacerHeight();
+    }
 
     // Handle scroll events
     window.addEventListener('scroll', function () {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollThreshold = topBar.offsetHeight + 10;
+        // Only process scroll events if all required elements exist
+        if (topBar && header) {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollThreshold = topBar.offsetHeight + 10;
 
-        // Apply classes based on scroll position
-        if (scrollTop > scrollThreshold) {
-            header.classList.add('header-scrolled');
-            header.style.backgroundColor = '#02050A';
-        } else {
-            header.classList.remove('header-scrolled');
-            header.style.background = 'linear-gradient(to right top, #02050A, #333)';
+            // Apply classes based on scroll position
+            if (scrollTop > scrollThreshold) {
+                header.classList.add('header-scrolled');
+                header.style.backgroundColor = '#02050A';
+            } else {
+                header.classList.remove('header-scrolled');
+                header.style.background = 'linear-gradient(to right top, #02050A, #333)';
+            }
         }
     });
 
     // Update header spacer on window resize
-    window.addEventListener('resize', setHeaderSpacerHeight);
+    window.addEventListener('resize', function () {
+        // Only call if all required elements exist
+        if (topBar && header && headerSpacer) {
+            setHeaderSpacerHeight();
+        }
+    });
 }
 
 /**

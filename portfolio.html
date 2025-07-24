@@ -15,7 +15,7 @@
         /* Portfolio page specific styles */
         .marquee-section {
             background-color: #f8f9fa;
-            padding: 40px 0;
+            padding: 100px 0;
             overflow: hidden;
             position: relative;
             width: 100%;
@@ -157,19 +157,25 @@
             margin-bottom: 20px;
             transition: all 0.3s ease;
             cursor: pointer;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         .portfolio-img-container {
             position: relative;
             overflow: hidden;
             border-radius: 8px;
+            aspect-ratio: 4/3;  /* Maintain consistent aspect ratio */
+            height: 400px; /* Fixed height for all containers */
         }
         
         .portfolio-img-container img {
             width: 100%;
-            height: 240px;
+            height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
+            min-height: 400px; /* Increased minimum height for all images */
         }
         
         .portfolio-card:hover .portfolio-img-container img {
@@ -189,28 +195,32 @@
             margin: 0;
         }
         
+        .portfolio-content {
+            margin-top: auto; /* Push content to bottom to align titles */
+        }
+        
         /* Responsive adjustments for portfolio cards */
         @media (max-width: 1199px) {
             .portfolio-img-container img {
-                height: 220px;
+                min-height: 220px;
             }
         }
         
         @media (max-width: 991px) {
             .portfolio-img-container img {
-                height: 200px;
+                min-height: 200px;
             }
         }
         
         @media (max-width: 767px) {
             .portfolio-img-container img {
-                height: 180px;
+                min-height: 180px;
             }
         }
         
         @media (max-width: 576px) {
             .portfolio-img-container img {
-                height: 160px;
+                min-height: 160px;
             }
             
             .portfolio-title {
@@ -264,7 +274,7 @@
         <div class="container">
             <div class="row g-4">
                 <!-- Card 1 -->
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
                     <div class="portfolio-card">
                         <div class="portfolio-img-container">
                             <img src="/assets/portfolio/Colorful-Assortment-of-Macarons-and-Packaging.webp" alt="The Dark Side" class="img-fluid rounded">
@@ -277,8 +287,8 @@
                 </div>
 
                 <!-- Card 2 -->
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="portfolio-card">
+                <!-- <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+                    <div class="portfolio-card h-100">
                         <div class="portfolio-img-container">
                             <img src="/assets/portfolio/Minimalist-Bottle-Against-Gradient-Background.webp" alt="Justice Robot" class="img-fluid rounded">
                         </div>
@@ -287,10 +297,10 @@
                             <p class="portfolio-category">Design</p>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- Card 3 -->
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
                     <div class="portfolio-card">
                         <div class="portfolio-img-container">
                             <img src="/assets/portfolio/Minimalist-White-Baseball-Cap.webp" alt="Color Current" class="img-fluid rounded">
@@ -303,7 +313,7 @@
                 </div>
 
                 <!-- Card 4 -->
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
                     <div class="portfolio-card">
                         <div class="portfolio-img-container">
                             <img src="/assets/portfolio/nkLC12rAR56ibf4tRP0JYBiA.webp" alt="Subsequent Sneeze" class="img-fluid rounded">
@@ -316,7 +326,7 @@
                 </div>
 
                 <!-- Card 5 -->
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
                     <div class="portfolio-card">
                         <div class="portfolio-img-container">
                             <img src="/assets/portfolio/SleekCraft-Over-Ear-Headphones-in-Black-Yellow.webp" alt="Wiggly Finger" class="img-fluid rounded">
@@ -329,7 +339,7 @@
                 </div>
 
                 <!-- Card 6 -->
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
                     <div class="portfolio-card">
                         <div class="portfolio-img-container">
                             <img src="/assets/portfolio/SPOA-Vintage-Camera-with-Dual-Viewfinders.webp" alt="Share Spark" class="img-fluid rounded">
@@ -342,7 +352,7 @@
                 </div>
 
                 <!-- Card 7 -->
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
                     <div class="portfolio-card">
                         <div class="portfolio-img-container">
                             <img src="/assets/portfolio/Stoic-Luxury-Brand-Boxes.webp" alt="Neon Light" class="img-fluid rounded">
@@ -355,7 +365,7 @@
                 </div>
 
                 <!-- Card 8 -->
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
                     <div class="portfolio-card">
                         <div class="portfolio-img-container">
                             <img src="/assets/portfolio/White-Sneakers-on-Blue-Background.webp" alt="Dream Sound" class="img-fluid rounded">

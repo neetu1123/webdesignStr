@@ -1,115 +1,115 @@
 /* Main CSS file for Real Estate website */
- body {
+body {
   cursor: pointer;
- }
+}
 
 .textColor {
-    color: #004369;
+  color: #004369;
 }
 
 .lightText {
-    color: #1B7895;
+  color: #1B7895;
 }
 
 .bgGradient {
-    background-image: linear-gradient(to right, #004369, #1B7895);
+  background-image: linear-gradient(to right, #004369, #1B7895);
 }
 
 /* Header styles */
 #top-bar {
-    background-color: #262626 !important;
-    height: 56px;
-    z-index: 1030;
+  background-color: #262626 !important;
+  height: 56px;
+  z-index: 1030;
 }
 
 #main-header {
-    top: 56px;
-    z-index: 1020;
-    transition: all 0.3s;
-    background: linear-gradient(to right top, #1a365d, #333);
+  top: 56px;
+  z-index: 1020;
+  transition: all 0.3s;
+  background: linear-gradient(to right top, #1a365d, #333);
 }
 
 .header-scrolled {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Hover effects */
 .hover-effect {
-    transition: color 0.3s;
+  transition: color 0.3s;
 }
 
 .hover-effect:hover {
-    color: #1B7895 !important;
+  color: #1B7895 !important;
 }
 
 /* Background gradients */
 .bg-gradient {
-    background: linear-gradient(to right top, #1a365d, #333);
+  background: linear-gradient(to right top, #1a365d, #333);
 }
 
 /* Custom button style with animation */
 .btn-style {
-    position: relative;
-    overflow: hidden;
-    color: #212529;
-    border: 1px solid transparent;
-    transition: all 0.5s ease-in-out;
-    z-index: 1;
+  position: relative;
+  overflow: hidden;
+  color: #212529;
+  border: 1px solid #004369;
+  transition: all 0.5s ease-in-out;
+  z-index: 1;
 }
 
 .btn-style::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 0;
-    background-color: #000;
-    transition: all 0.5s ease-in-out;
-    z-index: -1;
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 0;
+  background-color: #000;
+  transition: all 0.5s ease-in-out;
+  z-index: -1;
 }
 
 .btn-style:hover::before {
-    width: 100%;
+  width: 100%;
 }
 
 .btn-style:hover {
-    color: white;
+  color: white;
 }
 
 /* Card styling */
 .card {
-    transition: transform 0.3s, box-shadow 0.3s;
-    margin-bottom: 1.5rem;
-    border-radius: 8px;
-    overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Add hover effect for sections */
 section {
-    opacity: 1;
-    transition: opacity 0.5s ease;
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 
 .animate-fadeInUp {
-    animation: fadeInUp 0.5s ease-out;
+  animation: fadeInUp 0.5s ease-out;
 }
 
 /* Accordion custom styling */
 .accordion-button:not(.collapsed) {
-    color: white;
-    background-color: #1a365d;
-    box-shadow: none;
+  color: white;
+  background-color: #1a365d;
+  box-shadow: none;
 }
 
 .accordion-button:focus {
-    box-shadow: none;
-    border-color: rgba(0, 0, 0, .125);
+  box-shadow: none;
+  border-color: rgba(0, 0, 0, .125);
 }
 
 /* .accordion-button::after {
@@ -122,15 +122,15 @@ section {
 
 /* Animations */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translate3d(0, 40px, 0);
-    }
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
 
-    to {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /* Custom responsive fixes */
@@ -168,9 +168,7 @@ section {
   }
 
   /* Adjust footer columns */
-  footer .col-lg-5,
-  footer .col-lg-2,
-  footer .col-lg-3 {
+  footer .col-section {
     margin-bottom: 30px;
   }
 }
@@ -217,6 +215,6 @@ img.img-fluid {
 
 /* Fix header spacing */
 /* #header-spacer { */
-  /* display: block; */
-  /* width: 100%; */
+/* display: block; */
+/* width: 100%; */
 /* } */
