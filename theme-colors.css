@@ -1,0 +1,340 @@
+/* Theme Colors CSS File
+   Based on the color palette:
+   - #4c75e6 (bright blue)
+   - #cdfb3e (lime green)
+   - #122439 (very dark navy)
+   - #f9fafc (very light off-white)
+   - #e6ebf5 (light gray-blue for neutral elements)
+*/
+
+:root {
+  --primary-background: #f9fafc;
+  --primary-text: #122439;
+  --secondary-text: #555;
+  --primary-accent: #4c75e6;
+  --secondary-accent: #cdfb3e;
+  --neutral-color: #e6ebf5;
+}
+
+/* Body and general styling */
+body {
+  background-color: var(--primary-background) !important;
+  color: var(--secondary-text) !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6, .display-4, .display-5, .fw-bold {
+  color: var(--primary-text) !important;
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: var(--primary-accent) !important;
+  border-color: var(--primary-accent) !important;
+  color: white !important;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #3a5ac2 !important;
+  border-color: #3a5ac2 !important;
+}
+
+.btn-outline-light {
+  color: var(--primary-accent) !important;
+  border-color: var(--primary-accent) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-light:hover, .btn-outline-light:focus {
+  background-color: var(--secondary-accent) !important;
+  color: var(--primary-text) !important;
+}
+
+/* Text colors */
+.text-primary {
+  color: var(--primary-accent) !important;
+}
+
+.text-secondary {
+  color: var(--secondary-text) !important;
+}
+
+.text-white, .text-light {
+  color: var(--secondary-text) !important;
+}
+
+/* Cards styling */
+.card {
+  background-color: white !important;
+  border-color: var(--neutral-color) !important;
+  color: var(--secondary-text) !important;
+}
+
+.card.text-white {
+  color: var(--secondary-text) !important;
+  background-color: white !important;
+}
+
+.hover-card {
+  transition: all 0.3s ease;
+  border-color: var(--neutral-color) !important;
+}
+
+.hover-card:hover {
+  border-color: var(--primary-accent) !important;
+  transform: translateY(-3px);
+}
+
+/* Section backgrounds */
+.bg-dark {
+  background-color: var(--primary-background) !important;
+}
+
+.bg-black {
+  background-color: var(--primary-background) !important;
+}
+
+.bg-gradient-blue-purple {
+  background: linear-gradient(90deg, var(--primary-accent), #6610f2);
+}
+
+.bg-gradient-blue-purple h2.text-white, 
+.bg-gradient-blue-purple p.text-white,
+.bg-gradient-blue-purple .text-blue-100 {
+  color: white !important;
+}
+
+/* Feature cards styling */
+.rounded-circle.bg-dark {
+  background-color: white !important;
+  border: 1px solid var(--neutral-color) !important;
+}
+
+/* Review cards */
+.review-card {
+  background-color: white !important;
+  border: 1px solid var(--neutral-color) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+.review-card.bg-dark {
+  background-color: white !important;
+}
+
+.review-card p.text-light, 
+.review-card p.fst-italic {
+  color: var(--secondary-text) !important;
+}
+
+/* Client Reviews Section */
+#client-reviews {
+  background-color: var(--primary-background) !important;
+}
+
+#client-reviews .review-card {
+  background-color: white !important;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#client-reviews .review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(76, 117, 230, 0.1) !important;
+}
+
+#client-reviews .fa-quote-left,
+#client-reviews .fa-quote-right {
+  color: var(--primary-accent) !important;
+  opacity: 0.5;
+}
+
+/* FAQ section */
+.faq-question {
+  color: var(--primary-text) !important;
+}
+
+.faq-question:hover, .faq-question.active {
+  color: var(--primary-accent) !important;
+}
+
+.faq-answer {
+  color: var(--secondary-text) !important;
+}
+
+.border-dark {
+  border-color: var(--neutral-color) !important;
+}
+
+/* FAQ Section Enhancements */
+#faq-section {
+  background-color: var(--primary-background) !important;
+}
+
+#faq-section .faq-item {
+  border-color: var(--neutral-color) !important;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+#faq-section .faq-item:hover {
+  background-color: rgba(76, 117, 230, 0.05);
+}
+
+#faq-section .faq-question.active {
+  color: var(--primary-accent) !important;
+  font-weight: 500;
+}
+
+#faq-section .faq-answer {
+  color: var(--secondary-text) !important;
+  line-height: 1.7;
+  padding-left: 10px;
+  border-left: 3px solid var(--primary-accent);
+}
+
+#faq-section .bg-success {
+  background-color: var(--secondary-accent) !important;
+  color: var(--primary-text) !important;
+  font-weight: bold;
+}
+
+/* Success badge */
+.bg-success {
+  background-color: var(--secondary-accent) !important;
+  color: var(--primary-text) !important;
+}
+
+/* Quote icons */
+.fa-quote-left, .fa-quote-right {
+  color: var(--primary-accent) !important;
+  opacity: 0.5;
+}
+
+/* Override any remaining dark backgrounds */
+.bg-dark, [class*="bg-dark"], [class*="bg-black"] {
+  background-color: var(--primary-background) !important;
+}
+
+/* Style services section */
+#services-section {
+  background-color: var(--primary-background) !important;
+}
+
+/* Fix image containers */
+.rounded-circle {
+  background-color: white !important;
+}
+
+/* Fix feature icon background */
+.hover-card .rounded-circle {
+  border: 1px solid var(--neutral-color) !important;
+}
+
+/* Ensure sections have proper spacing */
+section {
+  border-bottom: 1px solid var(--neutral-color);
+  padding: 4rem 0;
+}
+
+section:last-child {
+  border-bottom: none;
+}
+
+/* Fix button hover states */
+.btn-primary:hover {
+  background-color: #3a5ac2 !important;
+  color: white !important;
+}
+
+.btn-outline-light:hover {
+  background-color: var(--secondary-accent) !important;
+  color: var(--primary-text) !important;
+}
+
+/* Header styling */
+#top-bar {
+  background-color: var(--primary-text) !important;
+}
+
+#main-header {
+  background-color: var(--primary-background) !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+}
+
+#main-header .hover-effect {
+  color: var(--primary-text) !important;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+#main-header .hover-effect:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--primary-accent);
+  transition: width 0.3s ease;
+}
+
+#main-header .hover-effect:hover:after {
+  width: 100%;
+}
+
+#main-header .hover-effect:hover {
+  color: var(--primary-accent) !important;
+}
+
+#mobile-menu {
+  background-color: var(--primary-background) !important;
+}
+
+#mobile-menu a {
+  color: var(--primary-text) !important;
+}
+
+#mobile-menu a:hover {
+  color: var(--primary-accent) !important;
+}
+
+/* Footer styling */
+.enhanced-footer {
+  /* background-color: var(--primary-background) !important; */
+  border-top: 1px solid var(--neutral-color);
+}
+
+.enhanced-footer h3, 
+.enhanced-footer h4, 
+.enhanced-footer .company-name {
+  color: var(--neutral-color) !important;
+}
+
+.enhanced-footer p {
+  color: var(--neutral-color) !important;
+}
+
+.enhanced-footer a {
+  color: var(--secondary-accent) !important;
+  transition: all 0.3s ease;
+}
+
+.enhanced-footer a:hover {
+  color: var(--secondary-accent) !important;
+  text-decoration: none;
+}
+
+.enhanced-footer .btn {
+  border-color: var(--secondary-accent) !important;
+  color: var(--secondary-accent) !important;
+}
+
+.enhanced-footer .btn:hover {
+  background-color: var(--secondary-accent) !important;
+  color: white !important;
+}
+
+.enhanced-footer .brand-icon {
+  background-color: var(--primary-accent) !important;
+  color: white !important;
+}
