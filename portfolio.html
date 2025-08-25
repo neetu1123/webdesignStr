@@ -1,296 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Portfolio - Our Work</title>
     <!-- Favicon -->
-       <link rel="icon" type="image/png" href="assets/about/about-1.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/about/about-1.png" />
+    <link rel="stylesheet" href="style.css" />
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        /* Portfolio page specific styles */
-        .marquee-section {
-            background-color: #f8f9fa;
-            padding: 100px 0;
-            overflow: hidden;
-            position: relative;
-            width: 100%;
+      /* Portfolio page specific styles */
+      .marquee-section {
+        background-color: #f8f9fa;
+        padding: 100px 0;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+      }
+
+      .marquee-wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .marquee-container {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      .marquee-content {
+        display: inline-block;
+        white-space: nowrap;
+        animation: marquee 40s linear infinite;
+        will-change: transform;
+      }
+
+      .marquee-container:hover .marquee-content {
+        animation-play-state: paused;
+      }
+
+      .marquee-item {
+        display: inline-block;
+        font-size: 7rem;
+        font-weight: 900;
+        color: #262626;
+        padding-right: 5px;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(0%);
         }
-        
-        .marquee-wrapper {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
+        100% {
+          transform: translateX(-50%);
         }
-        
-        .marquee-container {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-        
-        .marquee-content {
-            display: inline-block;
-            white-space: nowrap;
-            animation: marquee 40s linear infinite;
-            will-change: transform;
-        }
-        
-        .marquee-container:hover .marquee-content {
-            animation-play-state: paused;
-        }
-        
+      }
+
+      .marquee-arrow {
+        color: #ffa500;
+        font-size: 8rem;
+        margin: 0 15px;
+        display: inline-block;
+      }
+
+      .featured-work {
+        padding: 20px 0;
+      }
+
+      .featured-work-title {
+        font-size: 4rem;
+        font-weight: 800;
+        margin-bottom: 30px;
+        color: #262626;
+      }
+
+      .featured-work-circle {
+        width: 50px;
+        height: 50px;
+        border: 2px solid #ffa500;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 20px;
+      }
+
+      .featured-work-circle i {
+        color: #ffa500;
+      }
+
+      .featured-work-desc {
+        font-size: 1.25rem;
+        color: #555;
+        max-width: 800px;
+      }
+
+      @media (max-width: 991px) {
         .marquee-item {
-            display: inline-block;
-            font-size: 7rem;
-            font-weight: 900;
-            color: #262626;
-            padding-right: 5px;
+          font-size: 4rem;
         }
-        
-        @keyframes marquee {
-            0% {
-                transform: translateX(0%);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-        
         .marquee-arrow {
-            color: #FFA500;
-            font-size: 8rem;
-            margin: 0 15px;
-            display: inline-block;
+          font-size: 4rem;
         }
-        
-        .featured-work {
-            padding: 20px 0;
-        }
-        
         .featured-work-title {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 30px;
-            color: #262626;
+          font-size: 3rem;
         }
-        
-        .featured-work-circle {
-            width: 50px;
-            height: 50px;
-            border: 2px solid #FFA500;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-left: 20px;
+      }
+
+      @media (max-width: 767px) {
+        .marquee-item {
+          font-size: 3rem;
+          padding-right: 50px;
         }
-        
-        .featured-work-circle i {
-            color: #FFA500;
+        .marquee-arrow {
+          font-size: 3rem;
         }
-        
+        .featured-work-title {
+          font-size: 2.5rem;
+        }
         .featured-work-desc {
-            font-size: 1.25rem;
-            color: #555;
-            max-width: 800px;
+          font-size: 1.1rem;
         }
-        
-        @media (max-width: 991px) {
-            .marquee-item {
-                font-size: 4rem;
-            }
-            .marquee-arrow {
-                font-size: 4rem;
-            }
-            .featured-work-title {
-                font-size: 3rem;
-            }
+        .marquee-section {
+          padding: 60px 0;
         }
-        
-        @media (max-width: 767px) {
-            .marquee-item {
-                font-size: 3rem;
-                padding-right: 50px;
-            }
-            .marquee-arrow {
-                font-size: 3rem;
-            }
-            .featured-work-title {
-                font-size: 2.5rem;
-            }
-            .featured-work-desc {
-                font-size: 1.1rem;
-            }
-            .marquee-section {
-                padding: 60px 0;
-            }
+      }
+
+      @media (max-width: 576px) {
+        .marquee-item {
+          font-size: 2.5rem;
+          padding-right: 30px;
         }
-        
-        @media (max-width: 576px) {
-            .marquee-item {
-                font-size: 2.5rem;
-                padding-right: 30px;
-            }
-            .marquee-arrow {
-                font-size: 2.5rem;
-                margin: 0 8px;
-            }
-            .featured-work-title {
-                font-size: 2rem;
-            }
-            .marquee-section {
-                padding: 20px 0;
-            }
+        .marquee-arrow {
+          font-size: 2.5rem;
+          margin: 0 8px;
         }
-        
-        /* Portfolio Gallery Styles */
-        .portfolio-gallery {
-            background-color: #fff;
+        .featured-work-title {
+          font-size: 2rem;
         }
-        
-        .portfolio-card {
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+        .marquee-section {
+          padding: 20px 0;
         }
-        
+      }
+
+      /* Portfolio Gallery Styles */
+      .portfolio-gallery {
+        background-color: #fff;
+      }
+
+      .portfolio-card {
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .portfolio-img-container {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        aspect-ratio: 4/3; /* Maintain consistent aspect ratio */
+        height: 400px; /* Fixed height for all containers */
+      }
+
+      .portfolio-img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+        min-height: 300px; /* Adjusted minimum height for all images */
+      }
+
+      .portfolio-card:hover .portfolio-img-container img {
+        transform: scale(1.05);
+      }
+
+      .portfolio-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 8px 0 0 0;
+        color: #262626;
+      }
+
+      .portfolio-category {
+        font-size: 0.9rem;
+        color: #666;
+        margin: 0;
+      }
+
+      .portfolio-content {
+        margin-top: auto; /* Push content to bottom to align titles */
+      }
+
+      /* Responsive adjustments for portfolio cards */
+      @media (max-width: 1199px) {
         .portfolio-img-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            aspect-ratio: 4/3;  /* Maintain consistent aspect ratio */
-            height: 400px; /* Fixed height for all containers */
+          height: 350px;
         }
-        
         .portfolio-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-            min-height: 400px; /* Increased minimum height for all images */
+          min-height: 220px;
         }
-        
-        .portfolio-card:hover .portfolio-img-container img {
-            transform: scale(1.05);
+      }
+
+      @media (max-width: 991px) {
+        .portfolio-img-container {
+          height: 300px;
         }
-        
+        .portfolio-img-container img {
+          min-height: 200px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .portfolio-img-container {
+          height: 280px;
+        }
+        .portfolio-img-container img {
+          min-height: 180px;
+        }
+        .marquee-section {
+          padding: 50px 0;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .portfolio-img-container {
+          height: 250px;
+        }
+        .portfolio-img-container img {
+          min-height: 160px;
+        }
+
         .portfolio-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin: 8px 0 0 0;
-            color: #262626;
+          font-size: 1.1rem;
         }
-        
-        .portfolio-category {
-            font-size: 0.9rem;
-            color: #666;
-            margin: 0;
+        .featured-work-desc {
+          padding: 0 15px;
         }
-        
-        .portfolio-content {
-            margin-top: auto; /* Push content to bottom to align titles */
+        .row.g-4 {
+          padding: 0 10px;
         }
-        
-        /* Responsive adjustments for portfolio cards */
-        @media (max-width: 1199px) {
-            .portfolio-img-container img {
-                min-height: 220px;
-            }
+      }
+
+      @media (max-width: 480px) {
+        .portfolio-img-container {
+          height: 220px;
         }
-        
-        @media (max-width: 991px) {
-            .portfolio-img-container img {
-                min-height: 200px;
-            }
+        .marquee-section {
+          padding: 150px 0px 10px;
         }
-        
-        @media (max-width: 767px) {
-            .portfolio-img-container img {
-                min-height: 180px;
-            }
+        .marquee-item {
+          font-size: 2rem;
+          padding-right: 20px;
         }
-        
-        @media (max-width: 576px) {
-            .portfolio-img-container img {
-                min-height: 160px;
-            }
-            
-            .portfolio-title {
-                font-size: 1.1rem;
-            }
+        .marquee-arrow {
+          font-size: 2rem;
+          margin: 0 5px;
         }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header will be loaded here -->
     <div id="header-placeholder"></div>
-    
+
     <!-- Marquee Section -->
     <section class="marquee-section">
-        <div class="marquee-wrapper">
-            <div class="marquee-container">
-                <div class="marquee-content">
-                    <div class="marquee-item">
-                         <span class="marquee-arrow">&#8595;</span> DISCOVER OUR WORK
-                    </div>
-                    <div class="marquee-item">
-                         <span class="marquee-arrow">&#8595;</span> DISCOVER OUR WORK
-                    </div>
-                    <div class="marquee-item">
-                         <span class="marquee-arrow">&#8595;</span> DISCOVER OUR WORK
-                    </div>
-                    <div class="marquee-item">
-                         <span class="marquee-arrow">&#8595;</span> DISCOVER OUR WORK
-                    </div>
-                </div>
+      <div class="marquee-wrapper">
+        <div class="marquee-container">
+          <div class="marquee-content">
+            <div class="marquee-item">
+              <span class="marquee-arrow">&#8595;</span> DISCOVER OUR WORK
             </div>
+            <div class="marquee-item">
+              <span class="marquee-arrow">&#8595;</span> DISCOVER OUR WORK
+            </div>
+            <div class="marquee-item">
+              <span class="marquee-arrow">&#8595;</span> DISCOVER OUR WORK
+            </div>
+            <div class="marquee-item">
+              <span class="marquee-arrow">&#8595;</span> DISCOVER OUR WORK
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-    
+
     <!-- Featured Work Section -->
     <section class="featured-work">
-        <div class="container">
-            <div class="d-flex align-items-center">
-                <h2 class="featured-work-title">FEATURED WORK</h2>
-                
-            </div>
-            <p class="featured-work-desc">
-                Beautiful designs. Eye-catching interactions. Memorable experiences.
-                Development that delivers. Let the work do the talking.
-            </p>
+      <div class="container">
+        <div class="d-flex align-items-center">
+          <h2 class="featured-work-title">FEATURED WORK</h2>
         </div>
+        <p class="featured-work-desc">
+          Beautiful designs. Eye-catching interactions. Memorable experiences.
+          Development that delivers. Let the work do the talking.
+        </p>
+      </div>
     </section>
-    
+
     <!-- Portfolio Gallery Section -->
     <section class="portfolio-gallery py-5">
-        <div class="container">
-            <div class="row g-4">
-                <!-- Card 1 -->
-                <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
+      <div class="container">
+        <div class="row g-3 g-md-4">
+          <!-- Card 1 -->
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="portfolio-card">
+              <div class="portfolio-img-container">
+                <img
+                  src="assets/portfolio/Colorful-Assortment-of-Macarons-and-Packaging.webp"
+                  alt="The Dark Side"
+                  class="img-fluid rounded"
+                />
+              </div>
+              <div class="portfolio-content mt-3">
+                <h3 class="portfolio-title">THE DARK SIDE</h3>
+                <p class="portfolio-category">Creative</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <!-- <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                     <div class="portfolio-card">
                         <div class="portfolio-img-container">
-                            <img src="/assets/portfolio/Colorful-Assortment-of-Macarons-and-Packaging.webp" alt="The Dark Side" class="img-fluid rounded">
-                        </div>
-                        <div class="portfolio-content mt-3">
-                            <h3 class="portfolio-title">THE DARK SIDE</h3>
-                            <p class="portfolio-category">Creative</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <!-- <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-                    <div class="portfolio-card h-100">
-                        <div class="portfolio-img-container">
-                            <img src="/assets/portfolio/Minimalist-Bottle-Against-Gradient-Background.webp" alt="Justice Robot" class="img-fluid rounded">
+                            <img src="assets/portfolio/Minimalist-Bottle-Against-Gradient-Background.webp" alt="Justice Robot" class="img-fluid rounded">
                         </div>
                         <div class="portfolio-content mt-3">
                             <h3 class="portfolio-title">JUSTICE ROBOT</h3>
@@ -299,112 +349,136 @@
                     </div>
                 </div> -->
 
-                <!-- Card 3 -->
-                <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-                    <div class="portfolio-card">
-                        <div class="portfolio-img-container">
-                            <img src="/assets/portfolio/Minimalist-White-Baseball-Cap.webp" alt="Color Current" class="img-fluid rounded">
-                        </div>
-                        <div class="portfolio-content mt-3">
-                            <h3 class="portfolio-title">COLOR CURRENT</h3>
-                            <p class="portfolio-category">Photo</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-                    <div class="portfolio-card">
-                        <div class="portfolio-img-container">
-                            <img src="/assets/portfolio/nkLC12rAR56ibf4tRP0JYBiA.webp" alt="Subsequent Sneeze" class="img-fluid rounded">
-                        </div>
-                        <div class="portfolio-content mt-3">
-                            <h3 class="portfolio-title">SUBSEQUENT SNEEZE</h3>
-                            <p class="portfolio-category">Style</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-                    <div class="portfolio-card">
-                        <div class="portfolio-img-container">
-                            <img src="/assets/portfolio/SleekCraft-Over-Ear-Headphones-in-Black-Yellow.webp" alt="Wiggly Finger" class="img-fluid rounded">
-                        </div>
-                        <div class="portfolio-content mt-3">
-                            <h3 class="portfolio-title">WIGGLY FINGER</h3>
-                            <p class="portfolio-category">Creative</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-                    <div class="portfolio-card">
-                        <div class="portfolio-img-container">
-                            <img src="/assets/portfolio/SPOA-Vintage-Camera-with-Dual-Viewfinders.webp" alt="Share Spark" class="img-fluid rounded">
-                        </div>
-                        <div class="portfolio-content mt-3">
-                            <h3 class="portfolio-title">SHARE SPARK</h3>
-                            <p class="portfolio-category">Design</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 7 -->
-                <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-                    <div class="portfolio-card">
-                        <div class="portfolio-img-container">
-                            <img src="/assets/portfolio/Stoic-Luxury-Brand-Boxes.webp" alt="Neon Light" class="img-fluid rounded">
-                        </div>
-                        <div class="portfolio-content mt-3">
-                            <h3 class="portfolio-title">NEON LIGHT</h3>
-                            <p class="portfolio-category">Art</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 8 -->
-                <div class="col-lg-4 col-md-4 col-sm-6 mb-4">
-                    <div class="portfolio-card">
-                        <div class="portfolio-img-container">
-                            <img src="/assets/portfolio/White-Sneakers-on-Blue-Background.webp" alt="Dream Sound" class="img-fluid rounded">
-                        </div>
-                        <div class="portfolio-content mt-3">
-                            <h3 class="portfolio-title">DREAM SOUND</h3>
-                            <p class="portfolio-category">Music</p>
-                        </div>
-                    </div>
-                </div>
+          <!-- Card 3 -->
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="portfolio-card">
+              <div class="portfolio-img-container">
+                <img
+                  src="assets/portfolio/Minimalist-White-Baseball-Cap.webp"
+                  alt="Color Current"
+                  class="img-fluid rounded"
+                />
+              </div>
+              <div class="portfolio-content mt-3">
+                <h3 class="portfolio-title">COLOR CURRENT</h3>
+                <p class="portfolio-category">Photo</p>
+              </div>
             </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="portfolio-card">
+              <div class="portfolio-img-container">
+                <img
+                  src="assets/portfolio/nkLC12rAR56ibf4tRP0JYBiA.webp"
+                  alt="Subsequent Sneeze"
+                  class="img-fluid rounded"
+                />
+              </div>
+              <div class="portfolio-content mt-3">
+                <h3 class="portfolio-title">SUBSEQUENT SNEEZE</h3>
+                <p class="portfolio-category">Style</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="portfolio-card">
+              <div class="portfolio-img-container">
+                <img
+                  src="assets/portfolio/SleekCraft-Over-Ear-Headphones-in-Black-Yellow.webp"
+                  alt="Wiggly Finger"
+                  class="img-fluid rounded"
+                />
+              </div>
+              <div class="portfolio-content mt-3">
+                <h3 class="portfolio-title">WIGGLY FINGER</h3>
+                <p class="portfolio-category">Creative</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="portfolio-card">
+              <div class="portfolio-img-container">
+                <img
+                  src="assets/portfolio/SPOA-Vintage-Camera-with-Dual-Viewfinders.webp"
+                  alt="Share Spark"
+                  class="img-fluid rounded"
+                />
+              </div>
+              <div class="portfolio-content mt-3">
+                <h3 class="portfolio-title">SHARE SPARK</h3>
+                <p class="portfolio-category">Design</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="portfolio-card">
+              <div class="portfolio-img-container">
+                <img
+                  src="assets/portfolio/Stoic-Luxury-Brand-Boxes.webp"
+                  alt="Neon Light"
+                  class="img-fluid rounded"
+                />
+              </div>
+              <div class="portfolio-content mt-3">
+                <h3 class="portfolio-title">NEON LIGHT</h3>
+                <p class="portfolio-category">Art</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            <div class="portfolio-card">
+              <div class="portfolio-img-container">
+                <img
+                  src="assets/portfolio/White-Sneakers-on-Blue-Background.webp"
+                  alt="Dream Sound"
+                  class="img-fluid rounded"
+                />
+              </div>
+              <div class="portfolio-content mt-3">
+                <h3 class="portfolio-title">DREAM SOUND</h3>
+                <p class="portfolio-category">Music</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-    
+
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="script.js"></script>
-    
+
     <!-- Footer will be loaded here -->
     <div id="footer-placeholder"></div>
-    
+
     <!-- Script to load header and footer -->
     <script>
-        // Function to load header
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading header:', error));
-            
-        // Function to load footer
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading footer:', error));
+      // Function to load header
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-placeholder").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading header:", error));
+
+      // Function to load footer
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading footer:", error));
     </script>
-</body>
+  </body>
 </html>

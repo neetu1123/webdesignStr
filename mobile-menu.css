@@ -1,0 +1,57 @@
+/* Mobile Menu Styles */
+#mobile-menu {
+    background-color: rgba(33, 37, 41, 0.98);
+    transition: opacity 0.3s ease;
+}
+
+#mobile-menu a {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+#mobile-menu a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #0d6efd;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+#mobile-menu a:hover {
+    transform: translateY(-3px);
+}
+
+#mobile-menu a:hover:after {
+    width: 50%;
+}
+
+/* Mobile menu toggle button */
+#mobile-menu-toggle {
+    padding: 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+#mobile-menu-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#mobile-menu-close {
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+#mobile-menu-close:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: rotate(90deg);
+}
+
+/* Add active state for current page */
+#mobile-menu a.active {
+    color: #0d6efd !important;
+}

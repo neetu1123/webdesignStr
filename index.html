@@ -671,6 +671,7 @@
     
     <!-- Script to load header and footer -->
     <script>
+        console.log('Loading header and footer...');
         // Function to load header
         fetch('header.html')
             .then(response => response.text())
@@ -694,6 +695,7 @@
     
     <!-- Client Reviews and FAQ Scripts -->
     <script>
+        console.log('Initializing client reviews and FAQ functionality...');
         document.addEventListener('DOMContentLoaded', function() {
             // Reviews slider functionality
             const reviewsTrack = document.querySelector('.reviews-track');

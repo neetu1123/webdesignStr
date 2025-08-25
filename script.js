@@ -8,31 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
     initGradientEffect();
     initAnimations();
     initAccordion();
-    initMobileMenu();
 
     // Make sure navigation links work correctly
-    enableNavigation();
 });
 
-/**
- * Make sure navigation links are working properly
- */
-function enableNavigation() {
-    // Fix any issues with navigation links
-    const navLinks = document.querySelectorAll('a[href="about.html"], a[href="contact.html"]');
-    console.log('Found nav links:', navLinks.length);
 
-    navLinks.forEach(link => {
-        // Make sure the href attribute is properly set
-        console.log('Link href:', link.getAttribute('href'));
-
-        // Add click handler to force navigation
-        link.addEventListener('click', function (e) {
-            console.log('Link clicked, navigating to:', this.getAttribute('href'));
-            window.location.href = this.getAttribute('href');
-        });
-    });
-}
 
 /**
  * Handle header scroll behavior
@@ -157,41 +137,4 @@ function initAccordion() {
     });
 }
 
-/**
- * Initialize mobile menu functionality
- */
-function initMobileMenu() {
-    const toggleButton = document.getElementById('mobile-menu-toggle');
-    const closeButton = document.getElementById('mobile-menu-close');
-    const mobileMenu = document.getElementById('mobile-menu');
 
-    if (toggleButton && closeButton && mobileMenu) {
-        toggleButton.addEventListener('click', () => {
-            // Show the menu
-            mobileMenu.style.display = 'flex';
-            // Allow animation to work by delaying opacity change
-            setTimeout(() => {
-                mobileMenu.style.opacity = '1';
-                document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
-            }, 10);
-        });
-
-        closeButton.addEventListener('click', () => {
-            // Hide the menu with animation
-            mobileMenu.style.opacity = '0';
-            setTimeout(() => {
-                mobileMenu.style.display = 'none';
-                document.body.style.overflow = ''; // Restore scrolling
-            }, 300);
-        });
-
-        // Close menu when clicking menu items but still allow navigation
-        const menuLinks = mobileMenu.querySelectorAll('a');
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                // Just close the mobile menu without preventing navigation
-                closeButton.click();
-            });
-        });
-    }
-}
