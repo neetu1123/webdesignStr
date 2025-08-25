@@ -1,800 +1,1180 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RUNOK - Real Estate</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/about/about-1.png">
+    <link rel="icon" type="image/png" href="assets/about/about-1.png" />
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <!-- <link rel="stylesheet" href="assets/css/responsive-fixes.css"> -->
-   <!--  -->
+    <!--  -->
     <style>
-        /* Hover effect for feature cards */
-        .hover-card {
-            transition: all 0.3s ease;
-            border-color: #343a40 !important;
-        }
-        .hover-card:hover {
-            border-color: #0d6efd !important;
-            transform: translateY(-3px);
-        }
+      /* Hover effect for feature cards */
+      .hover-card {
+        transition: all 0.3s ease;
+        border-color: #343a40 !important;
+      }
+      .hover-card:hover {
+        border-color: #0d6efd !important;
+        transform: translateY(-3px);
+      }
 
-        /* Pre-Built Pages Section Styles */
-        .bg-gradient-blue-purple {
-            background: linear-gradient(90deg, #0d6efd, #6610f2);
-            color: white;
+      /* Pre-Built Pages Section Styles */
+      .bg-gradient-blue-purple {
+        background: linear-gradient(90deg, #0d6efd, #6610f2);
+        color: white;
+      }
+
+      .text-blue-100 {
+        color: rgba(219, 234, 254, 1);
+      }
+
+      .object-cover {
+        object-fit: cover;
+      }
+
+      /* Marquee Animation Styles */
+      .marquee {
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .marquee-content {
+        display: inline-block;
+        animation: marquee 30s linear infinite;
+        white-space: nowrap;
+      }
+
+      .marquee-reverse {
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .marquee-content-reverse {
+        display: inline-block;
+        animation: marquee-reverse 30s linear infinite;
+        white-space: nowrap;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
         }
-        
-        .text-blue-100 {
-            color: rgba(219, 234, 254, 1);
+        100% {
+          transform: translateX(-50%);
         }
-        
-        .object-cover {
-            object-fit: cover;
+      }
+
+      @keyframes marquee-reverse {
+        0% {
+          transform: translateX(-50%);
         }
-        
-        /* Marquee Animation Styles */
-        .marquee {
-            white-space: nowrap;
-            overflow: hidden;
-            width: 100%;
+        100% {
+          transform: translateX(0);
         }
-        
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 30s linear infinite;
-            white-space: nowrap;
-        }
-        
-        .marquee-reverse {
-            white-space: nowrap;
-            overflow: hidden;
-            width: 100%;
-        }
-        
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .marquee-content,
         .marquee-content-reverse {
-            display: inline-block;
-            animation: marquee-reverse 30s linear infinite;
-            white-space: nowrap;
+          animation-duration: 20s;
         }
-        
-        @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+      }
+
+      @media (max-width: 576px) {
+        .marquee-content,
+        .marquee-content-reverse {
+          animation-duration: 15s;
         }
-        
-        @keyframes marquee-reverse {
-            0% {
-                transform: translateX(-50%);
-            }
-            100% {
-                transform: translateX(0);
-            }
+      }
+
+      /* Client Reviews Section Styles */
+      .reviews-slider {
+        position: relative;
+        padding: 1rem 0;
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .reviews-track {
+        display: flex;
+        gap: 1.5rem;
+        width: max-content;
+        animation: slideReviews 30s linear infinite;
+        padding: 0.5rem 0;
+      }
+
+      .review-card {
+        flex: 0 0 auto;
+        width: 350px;
+        max-width: calc(100vw - 2rem);
+        height: 300px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        overflow: hidden;
+      }
+
+      .review-card:hover {
+        transform: translateY(-5px);
+      }
+
+      @keyframes slideReviews {
+        0% {
+          transform: translateX(0);
         }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .marquee-content, .marquee-content-reverse {
-                animation-duration: 20s;
-            }
+        100% {
+          transform: translateX(calc(-350px * 4 - 6rem)); /* 4 cards + gaps */
         }
-        
-        @media (max-width: 576px) {
-            .marquee-content, .marquee-content-reverse {
-                animation-duration: 15s;
-            }
-        }
-        
-        /* Client Reviews Section Styles */
-        .reviews-slider {
-            position: relative;
-            padding: 1rem 0;
-            overflow: hidden;
-            width: 100%;
-        }
-        
+      }
+
+      /* Responsive adjustments for reviews */
+      @media (max-width: 991px) {
         .reviews-track {
-            display: flex;
-            gap: 1.5rem;
-            width: max-content;
-            animation: slideReviews 30s linear infinite;
-            padding: 0.5rem 0;
+          animation-duration: 25s;
         }
-        
+      }
+
+      @media (max-width: 768px) {
+        .reviews-track {
+          animation-duration: 20s;
+        }
         .review-card {
-            flex: 0 0 auto;
-            width: 350px;
-            max-width: calc(100vw - 2rem);
-            height: 100%;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            overflow: hidden;
+          width: 300px;
         }
-        
-        .review-card:hover {
-            transform: translateY(-5px);
+      }
+
+      @media (max-width: 576px) {
+        .reviews-track {
+          animation-duration: 15s;
         }
-        
-        @keyframes slideReviews {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(calc(-350px * 4 - 6rem)); /* 4 cards + gaps */
-            }
+        .review-card {
+          width: 280px;
         }
-        
-        /* Responsive adjustments for reviews */
-        @media (max-width: 991px) {
-            .reviews-track {
-                animation-duration: 25s;
-            }
+        .reviews-slider {
+          padding: 0.5rem 0;
         }
-        
-        @media (max-width: 768px) {
-            .reviews-track {
-                animation-duration: 20s;
-            }
-            .review-card {
-                width: 300px;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .reviews-track {
-                animation-duration: 15s;
-            }
-            .review-card {
-                width: 280px;
-            }
-            .reviews-slider {
-                padding: 0.5rem 0;
-            }
-        }
-        
-        /* FAQ Section Styles */
-        .bg-black {
-            background-color: #000;
-        }
-        
-        .faq-question {
-            text-align: left;
-            transition: color 0.3s ease;
-            outline: none;
-            cursor: pointer;
-        }
-        
-        .faq-question:hover {
-            color: #0d6efd !important;
-        }
-        
-        .faq-question.active {
-            color: #0d6efd !important;
-        }
-        
-        .faq-answer {
-            line-height: 1.6;
-        }
-        
-        .faq-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .faq-question.active .faq-icon.fa-minus {
-            transform: rotate(0deg);
-        }
-        
-        .border-dark {
-            border-color: #1f1f1f !important;
-        }
-        
-        /* Ensure the green badge looks similar to Vue version */
-        .bg-success {
-            background-color: #22c55e !important;
-        }
-     /* FAQ Section Styles */
-        .faq-item {
-            transition: background-color 0.3s ease;
-        }
-        
-        .faq-item:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .faq-question {
-            cursor: pointer;
-        }
-        
-        .faq-icon {
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-item.open .faq-icon {
-            transform: rotate(45deg);
-        }
+      }
+
+      /* FAQ Section Styles */
+      .bg-black {
+        background-color: #000;
+      }
+
+      .faq-question {
+        text-align: left;
+        transition: color 0.3s ease;
+        outline: none;
+        cursor: pointer;
+      }
+
+      .faq-question:hover {
+        color: #0d6efd !important;
+      }
+
+      .faq-question.active {
+        color: #0d6efd !important;
+      }
+
+      .faq-answer {
+        line-height: 1.6;
+      }
+
+      .faq-icon {
+        transition: all 0.3s ease;
+      }
+
+      .faq-question.active .faq-icon.fa-minus {
+        transform: rotate(0deg);
+      }
+
+      .border-dark {
+        border-color: #1f1f1f !important;
+      }
+
+      /* Ensure the green badge looks similar to Vue version */
+      .bg-success {
+        background-color: #22c55e !important;
+      }
+      /* FAQ Section Styles */
+      .faq-item {
+        transition: background-color 0.3s ease;
+      }
+
+      .faq-item:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .faq-question {
+        cursor: pointer;
+      }
+
+      .faq-icon {
+        transition: transform 0.3s ease;
+      }
+
+      .faq-item.open .faq-icon {
+        transform: rotate(45deg);
+      }
     </style>
-</head>
-<body class="bg-dark text-white">
+  </head>
+  <body class="bg-dark text-white">
     <!-- Header will be loaded here -->
     <div id="header-placeholder"></div>
 
     <!-- Main Content -->
     <div class="bg-dark text-white">
-        <!-- Banner Section -->
-        <section id="banner-section" class="py-5">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <h1 class="display-4 fw-bold mb-4">Modern Real Estate Solutions</h1>
-                        <p class="lead mb-4">Find your dream property with our premium real estate services</p>
-                        <button class="btn btn-primary gradient-trigger me-3">Explore Properties</button>
-                        <button class="btn btn-outline-light">Learn More</button>
-                    </div>
-                    <div class="col-lg-6">
-                        <img src="assets/home/banner-big.png" alt="Real Estate Banner" class="img-fluid">
-                    </div>
-                </div>
+      <!-- Banner Section -->
+      <section id="banner-section" class="py-5" style="margin-top: 90px;">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <!-- <p class="text-primary small mb-2">
+                CREATED BY ENVATO CREATIVE HEROES
+              </p> -->
+              <h3 class="h4 mb-3">Web Agency - WordPress Theme</h3>
+              <h1 class="display-4 fw-bold mb-4">
+                 NO MORE AIRBNB DEPENDENCY
+              </h1>
+              <p class="lead mb-4">
+                <strong>Custom STR Websites, With PMS Integration</strong>
+              </p>
+              </p>
+              <a href="#portfolio" class="btn btn-primary gradient-trigger me-3"
+                >View Our Work</a
+              >
+              <a href="#contact" class="btn btn-outline-light">Contact Us</a>
             </div>
-        </section>
-
-        <!-- Services Section -->
-                <!-- Services Section -->
-        <section id="services-section" class="py-5 bg-dark">
-            <div class="container">
-                <div class="text-center mb-5">
-                    <p class="text-primary small mb-2">Build With Incredible</p>
-                    <h2 class="display-5 fw-bold mb-4">Incredible Unique Features</h2>
-                </div>
-
-                <div class="row g-4">
-                    <!-- Feature 1 -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card text-white bg-dark border border-secondary h-100 p-4 hover-card">
-                            <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mb-4" style="width: 64px; height: 64px; border: 1px solid #2c2c2c;">
-                                <img src="assets/home/features-1.png" alt="Feature 1" class="w-50 h-50">
-                            </div>
-                            <h3 class="h5 fw-bold mb-3">Premium Figma File Included</h3>
-                            <p class="small">These files include all the design elements, layouts, and assets used in the WordPress theme, allowing for customization</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Feature 2 -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card text-white bg-dark border border-secondary h-100 p-4 hover-card">
-                            <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mb-4" style="width: 64px; height: 64px; border: 1px solid #2c2c2c;">
-                                <img src="assets/home/features-2.png" alt="Feature 2" class="w-50 h-50">
-                            </div>
-                            <h3 class="h5 fw-bold mb-3">One Click Demo Installation</h3>
-                            <p class="small">No need to manually create pages or configure settings. Your site will look like the demo in minutes.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Feature 3 -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card text-white bg-dark border border-secondary h-100 p-4 hover-card">
-                            <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mb-4" style="width: 64px; height: 64px; border: 1px solid #2c2c2c;">
-                                <img src="assets/home/features-3.png" alt="Feature 3" class="w-50 h-50">
-                            </div>
-                            <h3 class="h5 fw-bold mb-3">Top Notch Theme Performance</h3>
-                            <p class="small">A high-performing theme is crucial for retaining visitors, improving search engine rankings, and enhancing overall site</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Feature 4 -->
-                    <div class="col-md-6 col-lg-3">
-                        <div class="card text-white bg-dark border border-secondary h-100 p-4 hover-card">
-                            <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center mb-4" style="width: 64px; height: 64px; border: 1px solid #2c2c2c;">
-                                <img src="assets/home/features-1.png" alt="Feature 4" class="w-50 h-50">
-                            </div>
-                            <h3 class="h5 fw-bold mb-3">Secure & Reliable Code</h3>
-                            <p class="small">Built with modern coding standards and best practices to ensure your website is secure and performs optimally</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-lg-6">
+              <img
+                src="assets/home/banner-big.png"
+                alt="Real Estate Banner"
+                class="img-fluid"
+              />
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- Pre-Built Pages Section -->
-        <section id="pre-built-pages" class="py-5 bg-gradient-blue-purple">
-            <div class="text-center mb-5">
-                <p class="text-blue-100 mb-2">Build With Incredible</p>
-                <h2 class="display-5 fw-bold mb-4">Pre-Built Inner Pages Ready</h2>
+      <!-- Services Section -->
+      <!-- Services Section -->
+      <section id="services-section" class="py-5 bg-dark">
+        <div class="container">
+          <div class="text-center mb-5">
+            <p class="text-primary small mb-2">Build With Incredible</p>
+            <h2 class="display-5 fw-bold mb-4">Incredible Unique Features</h2>
+          </div>
+
+          <div class="row g-4">
+            <!-- Feature 1 -->
+            <div class="col-md-6 col-lg-3">
+              <div
+                class="card text-white bg-dark border border-secondary h-100 p-4 hover-card"
+              >
+                <div
+                  class="rounded-circle bg-dark d-flex align-items-center justify-content-center mb-4"
+                  style="width: 64px; height: 64px; border: 1px solid #2c2c2c"
+                >
+                  <img
+                    src="assets/home/features-1.png"
+                    alt="Feature 1"
+                    class="w-50 h-50"
+                  />
+                </div>
+                <h3 class="h5 fw-bold mb-3">Web Design & Development</h3>
+                <p class="small">
+                  Custom websites built for performance, speed, and user
+                  experience — tailored to your brand and goals, whether it's a
+                  landing page or a full business site.
+                </p>
+              </div>
             </div>
 
-            <!-- Forward scrolling marquee -->
-            <div class="position-relative overflow-hidden mb-4">
-                <div class="marquee d-flex">
-                    <div class="marquee-content">
-                        <!-- First set of images -->
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 1" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 2" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 3" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 4" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 5" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 6" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <!-- Duplicate for seamless looping -->
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 1" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 2" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 3" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 4" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 5" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 6" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                    </div>
+            <!-- Feature 2 -->
+            <div class="col-md-6 col-lg-3">
+              <div
+                class="card text-white bg-dark border border-secondary h-100 p-4 hover-card"
+              >
+                <div
+                  class="rounded-circle bg-dark d-flex align-items-center justify-content-center mb-4"
+                  style="width: 64px; height: 64px; border: 1px solid #2c2c2c"
+                >
+                  <img
+                    src="assets/home/features-2.png"
+                    alt="Feature 2"
+                    class="w-50 h-50"
+                  />
                 </div>
+                <h3 class="h5 fw-bold mb-3"> Search Engine Optimization</h3>
+                <p class="small">
+                  We help your website rank on Google with strategic keyword
+                  targeting, technical SEO, and content optimization to bring in
+                  organic traffic that converts.
+                </p>
+              </div>
             </div>
 
-            <!-- Reverse scrolling marquee -->
-            <div class="position-relative overflow-hidden mt-4">
-                <div class="marquee-reverse d-flex">
-                    <div class="marquee-content-reverse">
-                        <!-- First set of images -->
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 7" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 8" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 9" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 10" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 11" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 12" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <!-- Duplicate for seamless looping -->
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 7" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 8" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 9" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 10" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 11" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                        <div class="d-inline-block me-4">
-                            <div class="rounded-3 overflow-hidden" style="width: 300px; height: 225px;">
-                                <img src="/assets/home/page-4.png" alt="Page Template 12" class="w-100 h-100 object-cover">
-                            </div>
-                        </div>
-                    </div>
+            <!-- Feature 3 -->
+            <div class="col-md-6 col-lg-3">
+              <div
+                class="card text-white bg-dark border border-secondary h-100 p-4 hover-card"
+              >
+                <div
+                  class="rounded-circle bg-dark d-flex align-items-center justify-content-center mb-4"
+                  style="width: 64px; height: 64px; border: 1px solid #2c2c2c"
+                >
+                  <img
+                    src="assets/home/features-3.png"
+                    alt="Feature 3"
+                    class="w-50 h-50"
+                  />
                 </div>
+                <h3 class="h5 fw-bold mb-3"> Social Media Marketing</h3>
+                <p class="small">
+                  Boost your brand's online presence with result-driven social
+                  media campaigns, ad strategies, and growth marketing tailored
+                  to your audience.
+                </p>
+              </div>
             </div>
-        </section>
 
-        <!-- Client Reviews Section -->
-        <section id="client-reviews" class="py-5 bg-dark">
-            <div class="">
-                <div class="text-center mb-5">
-                    <p class="text-primary small mb-2">Build With Incredible</p>
-                    <h2 class="display-5 fw-bold mb-4">Good Clients Reviews</h2>
+            <!-- Feature 4 -->
+            <div class="col-md-6 col-lg-3">
+              <div
+                class="card text-white bg-dark border border-secondary h-100 p-4 hover-card"
+              >
+                <div
+                  class="rounded-circle bg-dark d-flex align-items-center justify-content-center mb-4"
+                  style="width: 64px; height: 64px; border: 1px solid #2c2c2c"
+                >
+                  <img
+                    src="assets/home/features-1.png"
+                    alt="Feature 4"
+                    class="w-50 h-50"
+                  />
                 </div>
-
-                <div class="reviews-slider">
-                    <div class="reviews-track">
-                        <!-- Review Card 1 -->
-                        <div class="review-card bg-dark border border-secondary p-4">
-                            <div class="d-flex align-items-start mb-3">
-                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                                <div>
-                                    <h5 class="mb-1">falguniconnect</h5>
-                                    <p class="text-primary small">Customer Support</p>
-                                </div>
-                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
-                            </div>
-                            <p class="text-light fst-italic">"Theme is great, and support is even better, job well done."</p>
-                        </div>
-
-                        <!-- Review Card 2 -->
-                        <div class="review-card bg-dark border border-secondary p-4">
-                            <div class="d-flex align-items-start mb-3">
-                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                                <div>
-                                    <h5 class="mb-1">aaronburatti00</h5>
-                                    <p class="text-primary small">Customer Support</p>
-                                </div>
-                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
-                            </div>
-                            <p class="text-light fst-italic">"Really nice theme and excellent support from Sabbir Islam"</p>
-                        </div>
-
-                        <!-- Review Card 3 -->
-                        <div class="review-card bg-dark border border-secondary p-4">
-                            <div class="d-flex align-items-start mb-3">
-                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                                <div>
-                                    <h5 class="mb-1">lukeduff00</h5>
-                                    <p class="text-primary small">Customer Support</p>
-                                </div>
-                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
-                            </div>
-                            <p class="text-light fst-italic">"A brilliant theme, also the support is incredible. Sabbir has been a huge help."</p>
-                        </div>
-
-                        <!-- Review Card 4 -->
-                        <div class="review-card bg-dark border border-secondary p-4">
-                            <div class="d-flex align-items-start mb-3">
-                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                                <div>
-                                    <h5 class="mb-1">Saadi_Abdelm</h5>
-                                    <p class="text-primary small">Customer Support</p>
-                                </div>
-                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
-                            </div>
-                            <p class="text-light fst-italic">"Great theme with excellent customization options and outstanding support!"</p>
-                        </div>
-
-                        <!-- Duplicate reviews for continuous scrolling -->
-                        <!-- Review Card 1 (duplicate) -->
-                        <div class="review-card bg-dark border border-secondary p-4">
-                            <div class="d-flex align-items-start mb-3">
-                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                                <div>
-                                    <h5 class="mb-1">falguniconnect</h5>
-                                    <p class="text-primary small">Customer Support</p>
-                                </div>
-                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
-                            </div>
-                            <p class="text-light fst-italic">"Theme is great, and support is even better, job well done."</p>
-                        </div>
-
-                        <!-- Review Card 2 (duplicate) -->
-                        <div class="review-card bg-dark border border-secondary p-4">
-                            <div class="d-flex align-items-start mb-3">
-                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                                <div>
-                                    <h5 class="mb-1">aaronburatti00</h5>
-                                    <p class="text-primary small">Customer Support</p>
-                                </div>
-                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
-                            </div>
-                            <p class="text-light fst-italic">"Really nice theme and excellent support from Sabbir Islam"</p>
-                        </div>
-
-                        <!-- Review Card 3 (duplicate) -->
-                        <div class="review-card bg-dark border border-secondary p-4">
-                            <div class="d-flex align-items-start mb-3">
-                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                                <div>
-                                    <h5 class="mb-1">lukeduff00</h5>
-                                    <p class="text-primary small">Customer Support</p>
-                                </div>
-                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
-                            </div>
-                            <p class="text-light fst-italic">"A brilliant theme, also the support is incredible. Sabbir has been a huge help."</p>
-                        </div>
-
-                        <!-- Review Card 4 (duplicate) -->
-                        <div class="review-card bg-dark border border-secondary p-4">
-                            <div class="d-flex align-items-start mb-3">
-                                <i class="fas fa-quote-left text-secondary me-3" style="font-size: 1.5rem;"></i>
-                                <div>
-                                    <h5 class="mb-1">Saadi_Abdelm</h5>
-                                    <p class="text-primary small">Customer Support</p>
-                                </div>
-                                <i class="fas fa-quote-right text-secondary ms-auto" style="font-size: 1.5rem;"></i>
-                            </div>
-                            <p class="text-light fst-italic">"Great theme with excellent customization options and outstanding support!"</p>
-                        </div>
-                    </div>
-                </div>
+                <h3 class="h5 fw-bold mb-3">Content Writing</h3>
+                <p class="small">
+                  Engaging, well-structured content that communicates your
+                  message clearly — from web copy and blogs to landing pages and
+                  marketing assets.
+                </p>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
 
-        <!-- FAQ Section -->
-        <section id="faq-section" class="py-5 bg-black">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="text-center mb-5">
-                            <h2 class="display-5 fw-bold">
-                                FREQUENTLY<br>
-                                ASKED QUESTIONS
-                            </h2>
-                            <p class="text-secondary">ANSWERS TO COMMON QUERIES WE OFTEN RECEIVE</p>
-                            <div class="d-flex justify-content-end mt-4">
-                                <span class="bg-success text-dark px-4 py-2 rounded-pill fw-bold small">GET TO KNOW MORE</span>
-                            </div>
-                        </div>
-                        
-                        <div class="faq-container">
-                            <!-- FAQ Item 1 -->
-                            <div class="faq-item border-bottom border-dark mb-3">
-                                <button class="faq-question w-100 d-flex justify-content-between align-items-center py-3 border-0 bg-transparent text-white" type="button" data-index="0">
-                                    <span class="fw-medium fs-5">WHAT INDUSTRIES DO YOU SPECIALIZE IN?</span>
-                                    <i class="fas fa-plus faq-icon"></i>
-                                </button>
-                                <div class="faq-answer py-3 text-secondary d-none">
-                                    I have experience working across various industries including but not limited to Technology, Healthcare, Fashion, Hospitality and Non Profit Organization.
-                                </div>
-                            </div>
-                            
-                            <!-- FAQ Item 2 -->
-                            <div class="faq-item border-bottom border-dark mb-3">
-                                <button class="faq-question w-100 d-flex justify-content-between align-items-center py-3 border-0 bg-transparent text-white" type="button" data-index="1">
-                                    <span class="fw-medium fs-5">WHAT IS YOUR TYPICAL PROJECT TIMELINE?</span>
-                                    <i class="fas fa-plus faq-icon"></i>
-                                </button>
-                                <div class="faq-answer py-3 text-secondary d-none">
-                                    Project timelines vary depending on scope and complexity. Typically, small projects take 2-4 weeks, medium projects 4-8 weeks, and large projects 8-16 weeks.
-                                </div>
-                            </div>
-                            
-                            <!-- FAQ Item 3 -->
-                            <div class="faq-item border-bottom border-dark mb-3">
-                                <button class="faq-question w-100 d-flex justify-content-between align-items-center py-3 border-0 bg-transparent text-white" type="button" data-index="2">
-                                    <span class="fw-medium fs-5">DO YOU OFFER POST-LAUNCH SUPPORT OR MAINTENANCE?</span>
-                                    <i class="fas fa-plus faq-icon"></i>
-                                </button>
-                                <div class="faq-answer py-3 text-secondary d-none">
-                                    Yes, we offer comprehensive post-launch support including bug fixes, updates, maintenance, and ongoing development support.
-                                </div>
-                            </div>
-                            
-                            <!-- FAQ Item 4 -->
-                            <div class="faq-item border-bottom border-dark mb-3">
-                                <button class="faq-question w-100 d-flex justify-content-between align-items-center py-3 border-0 bg-transparent text-white" type="button" data-index="3">
-                                    <span class="fw-medium fs-5">WHAT SOFTWARE AND TOOLS DO YOU USE FOR YOUR DESIGNS?</span>
-                                    <i class="fas fa-plus faq-icon"></i>
-                                </button>
-                                <div class="faq-answer py-3 text-secondary d-none">
-                                    We use industry-standard tools including Figma, Adobe Creative Suite, Sketch, and various prototyping tools to deliver high-quality designs.
-                                </div>
-                            </div>
-                            
-                            <!-- FAQ Item 5 -->
-                            <div class="faq-item border-bottom border-dark mb-3">
-                                <button class="faq-question w-100 d-flex justify-content-between align-items-center py-3 border-0 bg-transparent text-white" type="button" data-index="4">
-                                    <span class="fw-medium fs-5">DO YOUR DESIGNS ARE TAILORED TO EACH CLIENT?</span>
-                                    <i class="fas fa-plus faq-icon"></i>
-                                </button>
-                                <div class="faq-answer py-3 text-secondary d-none">
-                                    Every design is custom-tailored to meet your specific business needs, brand identity, and target audience requirements.
-                                </div>
-                            </div>
-                            
-                            <!-- FAQ Item 6 -->
-                            <div class="faq-item border-bottom border-dark mb-3">
-                                <button class="faq-question w-100 d-flex justify-content-between align-items-center py-3 border-0 bg-transparent text-white" type="button" data-index="5">
-                                    <span class="fw-medium fs-5">HOW DO I UPGRADE, DOWNGRADE, OR CANCEL?</span>
-                                    <i class="fas fa-plus faq-icon"></i>
-                                </button>
-                                <div class="faq-answer py-3 text-secondary d-none">
-                                    You can easily manage your subscription through your account dashboard. Contact our support team for assistance with any changes to your plan.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+      <!-- Pre-Built Pages Section -->
+      <section id="pre-built-pages" class="py-5 bg-gradient-blue-purple">
+        <div class="text-center mb-5">
+          <p class="text-blue-100 mb-2">Build With Incredible</p>
+          <h2 class="display-5 fw-bold mb-4">Pre-Built Inner Pages Ready</h2>
+        </div>
+
+        <!-- Forward scrolling marquee -->
+        <div class="position-relative overflow-hidden mb-4">
+          <div class="marquee d-flex">
+            <div class="marquee-content">
+              <!-- First set of images -->
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 1"
+                    class="w-100 h-100 object-cover"
+                  />
                 </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 2"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 3"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 4"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 5"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 6"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <!-- Duplicate for seamless looping -->
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 1"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 2"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 3"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 4"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 5"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 6"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
             </div>
-        </section>
+          </div>
+        </div>
+
+        <!-- Reverse scrolling marquee -->
+        <div class="position-relative overflow-hidden mt-4">
+          <div class="marquee-reverse d-flex">
+            <div class="marquee-content-reverse">
+              <!-- First set of images -->
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 7"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 8"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 9"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 10"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 11"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 12"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <!-- Duplicate for seamless looping -->
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 7"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 8"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 9"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 10"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 11"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+              <div class="d-inline-block me-4">
+                <div
+                  class="rounded-3 overflow-hidden"
+                  style="width: 300px; height: 225px"
+                >
+                  <img
+                    src="/assets/home/page-4.png"
+                    alt="Page Template 12"
+                    class="w-100 h-100 object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Client Reviews Section -->
+      <section id="client-reviews" class="py-5 bg-dark">
+        <div class="">
+          <div class="text-center mb-5">
+            <p class="text-primary small mb-2">OUR CLIENTS SAY IT BEST</p>
+            <h2 class="display-5 fw-bold mb-4">REVIEWS THAT SPEAK FOR US</h2>
+          </div>
+
+          <div class="reviews-slider">
+            <div class="reviews-track">
+              <!-- Review Card 1 -->
+              <div class="review-card bg-dark border border-secondary p-4">
+                <div class="d-flex align-items-start mb-3">
+                  <i
+                    class="fas fa-quote-left text-secondary me-3"
+                    style="font-size: 1.5rem"
+                  ></i>
+                  <div>
+                    <h5 class="mb-1">Priya R.</h5>
+                    <p class="text-primary small">Marketing Consultant</p>
+                  </div>
+                  <i
+                    class="fas fa-quote-right text-secondary ms-auto"
+                    style="font-size: 1.5rem"
+                  ></i>
+                </div>
+                <p class="text-light fst-italic">
+                  "The team understood my business from day one and delivered a
+                  clean, modern website that matched my exact vision.
+                  Communication was smooth throughout the project. Highly
+                  recommend working with David and the team."
+                </p>
+              </div>
+
+              <!-- Review Card 2 -->
+              <div class="review-card bg-dark border border-secondary p-4">
+                <div class="d-flex align-items-start mb-3">
+                  <i
+                    class="fas fa-quote-left text-secondary me-3"
+                    style="font-size: 1.5rem"
+                  ></i>
+                  <div>
+                    <h5 class="mb-1">Daniel M.</h5>
+                    <p class="text-primary small">E-commerce Store Owner</p>
+                  </div>
+                  <i
+                    class="fas fa-quote-right text-secondary ms-auto"
+                    style="font-size: 1.5rem"
+                  ></i>
+                </div>
+                <p class="text-light fst-italic">
+                  "Steven was incredibly responsive even after the site was
+                  launched. From minor updates to technical questions, their
+                  support has been excellent. It's rare to find a web agency
+                  that actually sticks around after delivery."
+                </p>
+              </div>
+
+              <!-- Review Card 3 -->
+              <div class="review-card bg-dark border border-secondary p-4">
+                <div class="d-flex align-items-start mb-3">
+                  <i
+                    class="fas fa-quote-left text-secondary me-3"
+                    style="font-size: 1.5rem"
+                  ></i>
+                  <div>
+                    <h5 class="mb-1">Olivia J.</h5>
+                    <p class="text-primary small">Health Coach</p>
+                  </div>
+                  <i
+                    class="fas fa-quote-right text-secondary ms-auto"
+                    style="font-size: 1.5rem"
+                  ></i>
+                </div>
+                <p class="text-light fst-italic">
+                  "They didn't disappear after building the site — which I've
+                  seen happen with others. The after-sales service has been
+                  amazing. I've emailed for small updates and they handle them
+                  quickly without extra hassle."
+                </p>
+              </div>
+
+              <!-- Review Card 4 -->
+              <div class="review-card bg-dark border border-secondary p-4">
+                <div class="d-flex align-items-start mb-3">
+                  <i
+                    class="fas fa-quote-left text-secondary me-3"
+                    style="font-size: 1.5rem"
+                  ></i>
+                  <div>
+                    <h5 class="mb-1">Ahmad K.</h5>
+                    <p class="text-primary small">Small Business Owner</p>
+                  </div>
+                  <i
+                    class="fas fa-quote-right text-secondary ms-auto"
+                    style="font-size: 1.5rem"
+                  ></i>
+                </div>
+                <p class="text-light fst-italic">
+                  "This team gets it. From design to delivery, everything was
+                  handled professionally. What impressed me most was their
+                  attention to detail and willingness to make last-minute
+                  changes without hesitation."
+                </p>
+              </div>
+
+              <!-- Review Card 5 -->
+              <div class="review-card bg-dark border border-secondary p-4">
+                <div class="d-flex align-items-start mb-3">
+                  <i
+                    class="fas fa-quote-left text-secondary me-3"
+                    style="font-size: 1.5rem"
+                  ></i>
+                  <div>
+                    <h5 class="mb-1">Lauren S.</h5>
+                    <p class="text-primary small">Fitness Trainer</p>
+                  </div>
+                  <i
+                    class="fas fa-quote-right text-secondary ms-auto"
+                    style="font-size: 1.5rem"
+                  ></i>
+                </div>
+                <p class="text-light fst-italic">
+                  "The website was delivered faster than expected, and even
+                  after launch, they kept checking in to make sure everything
+                  was working perfectly. Truly appreciated the ongoing support."
+                </p>
+              </div>
+
+              <!-- Duplicate reviews for continuous scrolling -->
+              <!-- Review Card 1 (duplicate) -->
+              <div class="review-card bg-dark border border-secondary p-4">
+                <div class="d-flex align-items-start mb-3">
+                  <i
+                    class="fas fa-quote-left text-secondary me-3"
+                    style="font-size: 1.5rem"
+                  ></i>
+                  <div>
+                    <h5 class="mb-1">Priya R.</h5>
+                    <p class="text-primary small">Marketing Consultant</p>
+                  </div>
+                  <i
+                    class="fas fa-quote-right text-secondary ms-auto"
+                    style="font-size: 1.5rem"
+                  ></i>
+                </div>
+                <p class="text-light fst-italic">
+                  "The team understood my business from day one and delivered a
+                  clean, modern website that matched my exact vision.
+                  Communication was smooth throughout the project. Highly
+                  recommend working with David and the team."
+                </p>
+              </div>
+
+              <!-- Review Card 2 (duplicate) -->
+              <div class="review-card bg-dark border border-secondary p-4">
+                <div class="d-flex align-items-start mb-3">
+                  <i
+                    class="fas fa-quote-left text-secondary me-3"
+                    style="font-size: 1.5rem"
+                  ></i>
+                  <div>
+                    <h5 class="mb-1">Daniel M.</h5>
+                    <p class="text-primary small">E-commerce Store Owner</p>
+                  </div>
+                  <i
+                    class="fas fa-quote-right text-secondary ms-auto"
+                    style="font-size: 1.5rem"
+                  ></i>
+                </div>
+                <p class="text-light fst-italic">
+                  "Steven was incredibly responsive even after the site was
+                  launched. From minor updates to technical questions, their
+                  support has been excellent. It's rare to find a web agency
+                  that actually sticks around after delivery."
+                </p>
+              </div>
+
+              <!-- Review Card 3 (duplicate) -->
+              <div class="review-card bg-dark border border-secondary p-4">
+                <div class="d-flex align-items-start mb-3">
+                  <i
+                    class="fas fa-quote-left text-secondary me-3"
+                    style="font-size: 1.5rem"
+                  ></i>
+                  <div>
+                    <h5 class="mb-1">Olivia J.</h5>
+                    <p class="text-primary small">Health Coach</p>
+                  </div>
+                  <i
+                    class="fas fa-quote-right text-secondary ms-auto"
+                    style="font-size: 1.5rem"
+                  ></i>
+                </div>
+                <p class="text-light fst-italic">
+                  "They didn't disappear after building the site — which I've
+                  seen happen with others. The after-sales service has been
+                  amazing. I've emailed for small updates and they handle them
+                  quickly without extra hassle."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section id="faq-section" class="py-5 bg-black">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">
+                  FREQUENTLY<br />
+                  ASKED QUESTIONS
+                </h2>
+                <p class="text-secondary">
+                  ANSWERS TO COMMON QUERIES WE OFTEN RECEIVE
+                </p>
+                <div class="d-flex justify-content-end mt-4">
+                  <span
+                    class="bg-success text-dark px-4 py-2 rounded-pill fw-bold small"
+                    >GET TO KNOW MORE</span
+                  >
+                </div>
+              </div>
+
+              <div class="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item border-bottom border-dark mb-3">
+                  <button
+                    class="faq-question w-100 d-flex justify-content-between align-items-center py-3 border-0 bg-transparent text-white"
+                    type="button"
+                    data-index="0"
+                  >
+                    <span class="fw-medium fs-5"
+                      >HOW DOES WEBDESIGNSTR WORK?</span
+                    >
+                    <i class="fas fa-plus faq-icon"></i>
+                  </button>
+                  <div class="faq-answer py-3 text-secondary d-none">
+                    We start by understanding your business goals and design
+                    preferences. Once you're onboard, our team handles
+                    everything — from layout and content to launch and support.
+                    You'll get regular updates and have full transparency
+                    throughout the process.
+                  </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item border-bottom border-dark mb-3">
+                  <button
+                    class="faq-question w-100 d-flex justify-content-between align-items-center py-3 border-0 bg-transparent text-white"
+                    type="button"
+                    data-index="1"
+                  >
+                    <span class="fw-medium fs-5"
+                      >WHAT TECHNOLOGIES DOES WEBDESIGNSTR USE for web?</span
+                    >
+                    <i class="fas fa-plus faq-icon"></i>
+                  </button>
+                  <div class="faq-answer py-3 text-secondary d-none">
+                   using modern technologies like PHP (Laravel), JavaScript, React, Node.js, Angular, and more. We also work with core web technologies like HTML, CSS, and database systems as needed. Our team stays updated with the latest tools and frameworks to ensure
+                  </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item border-bottom border-dark mb-3">
+                  <button
+                    class="faq-question w-100 d-flex justify-content-between align-items-center py-3 border-0 bg-transparent text-white"
+                    type="button"
+                    data-index="2"
+                  >
+                    <span class="fw-medium fs-5"
+                      >HOW DOES WEBDESIGNSTR HELP VACATION RENTAL OWNERS?</span
+                    >
+                    <i class="fas fa-plus faq-icon"></i>
+                  </button>
+                  <div class="faq-answer py-3 text-secondary d-none">
+                   We design high-converting websites that help vacation rental owners take control of their bookings. Instead of relying solely on OTAs, we help you build your brand online with a fast, custom-coded website that reflects your property, showcases your value, and makes it easy for guests to book directly. Our focus is on performance, design, and long-term growth.
+                  </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item border-bottom border-dark mb-3">
+                  <button
+                    class="faq-question w-100 d-flex justify-content-between align-items-center py-3 border-0 bg-transparent text-white"
+                    type="button"
+                    data-index="3"
+                  >
+                    <span class="fw-medium fs-5"
+                      >CAN YOU INTEGRATE WITH PLATFORMS LIKE GUESTY AND OTHER
+                      PMS TOOLS?</span
+                    >
+                    <i class="fas fa-plus faq-icon"></i>
+                  </button>
+                  <div class="faq-answer py-3 text-secondary d-none">
+                    Yes — we specialize in integrating custom websites with leading PMS platforms like Guesty, Hostaway, Lodgify, OwnerRez, and others. Whether it’s syncing availability, automating booking flow, or pulling dynamic content — we make sure your site connects smoothly with the tools you already use, so your guests get a seamless experience and you save time.
+                  </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item border-bottom border-dark mb-3">
+                  <button
+                    class="faq-question w-100 d-flex justify-content-between align-items-center py-3 border-0 bg-transparent text-white"
+                    type="button"
+                    data-index="4"
+                  >
+                    <span class="fw-medium fs-5"
+                      >HOW MUCH DOES A WEBSITE COST?</span
+                    >
+                    <i class="fas fa-plus faq-icon"></i>
+                  </button>
+                  <div class="faq-answer py-3 text-secondary d-none">
+                   The cost of a website can vary based on the scope, features, and level of customization required. Once we understand your goals and project requirements, we’ll provide you with a detailed, transparent quote — with no hidden
+                  </div>
+                </div>
+
+                <!-- FAQ Item 6 -->
+                <div class="faq-item border-bottom border-dark mb-3">
+                  <button
+                    class="faq-question w-100 d-flex justify-content-between align-items-center py-3 border-0 bg-transparent text-white"
+                    type="button"
+                    data-index="5"
+                  >
+                    <span class="fw-medium fs-5"
+                      >DO YOU OFFER WEBSITE MAINTENANCE?</span
+                    >
+                    <i class="fas fa-plus faq-icon"></i>
+                  </button>
+                  <div class="faq-answer py-3 text-secondary d-none">
+                    Yes, complimentary for the first year, with optional
+                    long-term plans. Every website is fully responsive and
+                    mobile-friendly, and you'll receive full admin access with a
+                    walkthrough.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
-     <!-- Footer will be loaded here -->
+    <!-- Footer will be loaded here -->
     <div id="footer-placeholder"></div>
-    
+
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <!-- Custom JS -->
     <script src="script.js"></script>
-    
+
     <!-- Script to load header and footer -->
     <script>
-        console.log('Loading header and footer...');
-        // Function to load header
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-placeholder').innerHTML = data;
-                // Trigger header initialization after header content is loaded
-                if (typeof initHeaderScroll === 'function') {
-                    setTimeout(initHeaderScroll, 100); // Small delay to ensure DOM is updated
-                }
-            })
-            .catch(error => console.error('Error loading header:', error));
-            
-        // Function to load footer
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            })
-            .catch(error => console.error('Error loading footer:', error));
+      console.log("Loading header and footer...");
+      // Function to load header
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-placeholder").innerHTML = data;
+          // Trigger header initialization after header content is loaded
+          if (typeof initHeaderScroll === "function") {
+            setTimeout(initHeaderScroll, 100); // Small delay to ensure DOM is updated
+          }
+        })
+        .catch((error) => console.error("Error loading header:", error));
+
+      // Function to load footer
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading footer:", error));
     </script>
-    
+
     <!-- Client Reviews and FAQ Scripts -->
     <script>
-        console.log('Initializing client reviews and FAQ functionality...');
-        document.addEventListener('DOMContentLoaded', function() {
-            // Reviews slider functionality
-            const reviewsTrack = document.querySelector('.reviews-track');
-            const reviewsSlider = document.querySelector('.reviews-slider');
-            
-            if (reviewsTrack && reviewsSlider) {
-                // Pause animation on hover
-                reviewsSlider.addEventListener('mouseenter', () => {
-                    reviewsTrack.style.animationPlayState = 'paused';
-                });
-                
-                // Resume animation on mouse leave
-                reviewsSlider.addEventListener('mouseleave', () => {
-                    reviewsTrack.style.animationPlayState = 'running';
-                });
-                
-                // Ensure the animation calculation is correct for responsive displays
-                const updateReviewsAnimation = () => {
-                    const cards = reviewsTrack.querySelectorAll('.review-card');
-                    if (cards.length > 0) {
-                        const cardWidth = cards[0].offsetWidth;
-                        const cardGap = 24; // 1.5rem in pixels
-                        const totalWidth = (cardWidth + cardGap) * (cards.length / 2); // Half the cards (original set)
-                        
-                        // Update the animation using inline style instead of modifying stylesheet rules
-                        reviewsTrack.style.animation = 'none'; // Reset animation
-                        setTimeout(() => {
-                            // Create a style element with our custom keyframe
-                            const styleEl = document.createElement('style');
-                            styleEl.textContent = `
+      console.log("Initializing client reviews and FAQ functionality...");
+      document.addEventListener("DOMContentLoaded", function () {
+        // Reviews slider functionality
+        const reviewsTrack = document.querySelector(".reviews-track");
+        const reviewsSlider = document.querySelector(".reviews-slider");
+
+        if (reviewsTrack && reviewsSlider) {
+          // Pause animation on hover
+          reviewsSlider.addEventListener("mouseenter", () => {
+            reviewsTrack.style.animationPlayState = "paused";
+          });
+
+          // Resume animation on mouse leave
+          reviewsSlider.addEventListener("mouseleave", () => {
+            reviewsTrack.style.animationPlayState = "running";
+          });
+
+          // Ensure the animation calculation is correct for responsive displays
+          const updateReviewsAnimation = () => {
+            const cards = reviewsTrack.querySelectorAll(".review-card");
+            if (cards.length > 0) {
+              const cardWidth = cards[0].offsetWidth;
+              const cardGap = 24; // 1.5rem in pixels
+              const totalWidth = (cardWidth + cardGap) * (cards.length / 2); // Half the cards (original set)
+
+              // Update the animation using inline style instead of modifying stylesheet rules
+              reviewsTrack.style.animation = "none"; // Reset animation
+              setTimeout(() => {
+                // Create a style element with our custom keyframe
+                const styleEl = document.createElement("style");
+                styleEl.textContent = `
                                 @keyframes slideReviews {
                                     0% { transform: translateX(0); }
                                     100% { transform: translateX(-${totalWidth}px); }
                                 }
                             `;
-                            document.head.appendChild(styleEl);
-                            
-                            // Re-apply the animation
-                            reviewsTrack.style.animation = 'slideReviews 30s linear infinite';
-                        }, 10);
-                    }
-                };
-                
-                // Call once on load and on window resize
-                updateReviewsAnimation();
-                window.addEventListener('resize', updateReviewsAnimation);
+                document.head.appendChild(styleEl);
+
+                // Re-apply the animation
+                reviewsTrack.style.animation =
+                  "slideReviews 30s linear infinite";
+              }, 10);
             }
-            
-            // FAQ functionality
-            // Track active FAQ item (starts at 0, first item is active by default)
-            let activeFaqIndex = 0;
-            
-            // Get all FAQ question buttons
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            const faqAnswers = document.querySelectorAll('.faq-answer');
-            
-            // Function to update the active FAQ state
-            const updateActiveFaq = (index) => {
-                // Close all answers and reset all icons
-                faqAnswers.forEach((answer, i) => {
-                    const icon = faqQuestions[i].querySelector('.faq-icon');
-                    
-                    if (i === index) {
-                        // If clicking the same item that's already open, close it
-                        if (!answer.classList.contains('d-none')) {
-                            answer.classList.add('d-none');
-                            icon.classList.remove('fa-minus');
-                            icon.classList.add('fa-plus');
-                            faqQuestions[i].classList.remove('active');
-                            activeFaqIndex = -1; // No active item
-                            return;
-                        }
-                        
-                        // Open the clicked item
-                        answer.classList.remove('d-none');
-                        icon.classList.remove('fa-plus');
-                        icon.classList.add('fa-minus');
-                        faqQuestions[i].classList.add('active');
-                        activeFaqIndex = index;
-                    } else {
-                        // Close all other items
-                        answer.classList.add('d-none');
-                        icon.classList.remove('fa-minus');
-                        icon.classList.add('fa-plus');
-                        faqQuestions[i].classList.remove('active');
-                    }
-                });
-            };
-            
-            // Add click event listener to each FAQ question
-            faqQuestions.forEach((question, index) => {
-                question.addEventListener('click', function() {
-                    updateActiveFaq(index);
-                });
-            });
-            
-            // Initialize the first FAQ item as open
-            updateActiveFaq(0);
+          };
+
+          // Call once on load and on window resize
+          updateReviewsAnimation();
+          window.addEventListener("resize", updateReviewsAnimation);
+        }
+
+        // FAQ functionality
+        // Track active FAQ item (starts at 0, first item is active by default)
+        let activeFaqIndex = 0;
+
+        // Get all FAQ question buttons
+        const faqQuestions = document.querySelectorAll(".faq-question");
+        const faqAnswers = document.querySelectorAll(".faq-answer");
+
+        // Function to update the active FAQ state
+        const updateActiveFaq = (index) => {
+          // Close all answers and reset all icons
+          faqAnswers.forEach((answer, i) => {
+            const icon = faqQuestions[i].querySelector(".faq-icon");
+
+            if (i === index) {
+              // If clicking the same item that's already open, close it
+              if (!answer.classList.contains("d-none")) {
+                answer.classList.add("d-none");
+                icon.classList.remove("fa-minus");
+                icon.classList.add("fa-plus");
+                faqQuestions[i].classList.remove("active");
+                activeFaqIndex = -1; // No active item
+                return;
+              }
+
+              // Open the clicked item
+              answer.classList.remove("d-none");
+              icon.classList.remove("fa-plus");
+              icon.classList.add("fa-minus");
+              faqQuestions[i].classList.add("active");
+              activeFaqIndex = index;
+            } else {
+              // Close all other items
+              answer.classList.add("d-none");
+              icon.classList.remove("fa-minus");
+              icon.classList.add("fa-plus");
+              faqQuestions[i].classList.remove("active");
+            }
+          });
+        };
+
+        // Add click event listener to each FAQ question
+        faqQuestions.forEach((question, index) => {
+          question.addEventListener("click", function () {
+            updateActiveFaq(index);
+          });
         });
+
+        // Initialize the first FAQ item as open
+        updateActiveFaq(0);
+      });
     </script>
-</body>
+  </body>
 </html>
