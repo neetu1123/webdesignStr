@@ -26,7 +26,7 @@ body {
   top: 56px;
   z-index: 1020;
   transition: all 0.3s;
-  background: linear-gradient(to right top, #1a365d, #333);
+  background: linear-gradient(to right top, #4c75e6, #f9fafc);
 }
 
 .header-scrolled {
