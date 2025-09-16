@@ -42,42 +42,55 @@
           <div class="d-flex align-items-center">
             <div
               class="rounded d-flex align-items-center justify-content-center me-2"
-              style="width: 32px; height: 32px; "
+              style="width: 32px; height: 32px"
             >
               <i class="fas fa-hexagon text-white"></i>
             </div>
-            <span class="fs-4 fw-bold" style="color: #122439">WebDesignSTR</span>
+            <span class="fs-4 fw-bold" style="color: #122439"
+              >WebDesignSTR</span
+            >
           </div>
           <div class="d-none d-md-flex align-items-center">
             <a
-              href="index.html"
-              class="text-decoration-none mx-3 hover-effect"
+              href="#"
+              data-section="top"
+              class="nav-link text-decoration-none mx-3 hover-effect"
               style="color: #122439"
               >HOME</a
             >
             <a
-              href="about.html"
-              class="text-decoration-none mx-3 hover-effect"
+              href="#"
+              data-section="about-section"
+              class="nav-link text-decoration-none mx-3 hover-effect"
               id="about-link"
               style="color: #122439"
               >ABOUT</a
             >
-
             <a
-              href="portfolio.html"
-              class="text-decoration-none mx-3 hover-effect"
+              href="#"
+              data-section="services-section"
+              class="nav-link text-decoration-none mx-3 hover-effect"
               style="color: #122439"
-              >PORTFOLIO</a
+              >SERVICES</a
             >
             <a
-              href="service.html"
-              class="text-decoration-none mx-3 hover-effect"
+              href="#"
+              data-section="client-reviews"
+              class="nav-link text-decoration-none mx-3 hover-effect"
               style="color: #122439"
-              >SERVICE</a
+              >REVIEWS</a
             >
             <a
-              href="contact.html"
-              class="text-decoration-none mx-3 hover-effect"
+              href="#"
+              data-section="faq-section"
+              class="nav-link text-decoration-none mx-3 hover-effect"
+              style="color: #122439"
+              >FAQ</a
+            >
+            <a
+              href="#"
+              data-section="footer-placeholder"
+              class="nav-link text-decoration-none mx-3 hover-effect"
               id="contact-link"
               style="color: #122439"
               >CONTACT</a
@@ -110,51 +123,69 @@
             </button>
             <div class="text-center">
               <a
-                href="index.html"
-                class="text-decoration-none py-3 d-block fs-5 hover-effect"
+                href="#"
+                data-section="top"
+                class="nav-link text-decoration-none py-3 d-block fs-5 hover-effect"
                 style="color: #122439"
                 >HOME</a
               >
               <a
-                href="about.html"
-                class="text-decoration-none py-3 d-block fs-5 hover-effect"
+                href="#"
+                data-section="about-section"
+                class="nav-link text-decoration-none py-3 d-block fs-5 hover-effect"
                 id="mobile-about-link"
                 style="color: #122439"
                 >ABOUT</a
               >
               <a
-                href="contact.html"
-                class="text-decoration-none py-3 d-block fs-5 hover-effect"
+                href="#"
+                data-section="services-section"
+                class="nav-link text-decoration-none py-3 d-block fs-5 hover-effect"
+                style="color: #122439"
+                >SERVICES</a
+              >
+              <a
+                href="#"
+                data-section="client-reviews"
+                class="nav-link text-decoration-none py-3 d-block fs-5 hover-effect"
+                style="color: #122439"
+                >REVIEWS</a
+              >
+              <a
+                href="#"
+                data-section="faq-section"
+                class="nav-link text-decoration-none py-3 d-block fs-5 hover-effect"
+                style="color: #122439"
+                >FAQ</a
+              >
+              <a
+                href="#"
+                data-section="footer-placeholder"
+                class="nav-link text-decoration-none py-3 d-block fs-5 hover-effect"
                 id="mobile-contact-link"
                 style="color: #122439"
                 >CONTACT</a
               >
-              <a
-                href="portfolio.html"
-                class="text-decoration-none py-3 d-block fs-5 hover-effect"
-                style="color: #122439"
-                >TESTIMONIAL</a
-              >
-              <a
-                href="service.html"
-                class="text-decoration-none py-3 d-block fs-5 hover-effect"
-                style="color: #122439"
-                >SERVICE</a
-              >
               <div class="mt-4">
-                <button class="btn btn-primary gradient-trigger">
-                 Contact Us
+                <a
+                  href="#"
+                  data-section="footer-placeholder"
+                  class="btn btn-primary gradient-trigger nav-link"
+                >
+                  Contact Us
                   <i class="fas fa-arrow-up-right ms-2"></i>
-                </button>
+                </a>
               </div>
             </div>
           </div>
-          <button
-            class="btn btn-primary gradient-trigger d-none d-md-flex align-items-center"
+          <a
+            href="#"
+            data-section="footer-placeholder"
+            class="nav-link btn btn-primary gradient-trigger d-none d-md-flex align-items-center"
           >
             Contact Us
             <i class="fas fa-arrow-up-right ms-2"></i>
-          </button>
+          </a>
         </nav>
       </header>
 
@@ -194,6 +225,78 @@
 
           // Update on window resize
           window.addEventListener("resize", updateHeaderSpacerHeight);
+        }
+
+        // Smooth scrolling navigation
+        const navLinks = document.querySelectorAll(".nav-link");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+        const mobileMenuClose = document.getElementById("mobile-menu-close");
+
+        // Function to handle smooth scrolling
+        function smoothScroll(e) {
+          e.preventDefault();
+
+          // Close mobile menu if open
+          if (mobileMenu && mobileMenu.style.display === "flex") {
+            mobileMenu.style.opacity = "0";
+            setTimeout(() => {
+              mobileMenu.style.display = "none";
+            }, 300);
+          }
+
+          const targetId = this.getAttribute("data-section");
+
+          // Special case for "top"
+          if (targetId === "top") {
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+            return;
+          }
+
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            // Get header height for offset
+            const headerHeight =
+              document.getElementById("main-header")?.offsetHeight || 0;
+
+            const targetPosition =
+              targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = targetPosition - headerHeight;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth",
+            });
+          }
+        }
+
+        // Add smooth scrolling to all navigation links
+        navLinks.forEach((link) => {
+          link.addEventListener("click", smoothScroll);
+        });
+
+        // Mobile menu toggle
+        if (mobileMenuToggle) {
+          mobileMenuToggle.addEventListener("click", function () {
+            mobileMenu.style.display = "flex";
+            setTimeout(() => {
+              mobileMenu.style.opacity = "1";
+            }, 10);
+          });
+        }
+
+        // Mobile menu close
+        if (mobileMenuClose) {
+          mobileMenuClose.addEventListener("click", function () {
+            mobileMenu.style.opacity = "0";
+            setTimeout(() => {
+              mobileMenu.style.display = "none";
+            }, 300);
+          });
         }
       });
     </script>

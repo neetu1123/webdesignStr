@@ -65,11 +65,11 @@ footer.enhanced-footer .service-links a:hover {
 
 footer.enhanced-footer .copyright {
     font-size: 0.9rem;
-    color: #6c757d;
+    color: white !important;
 }
 
 footer.enhanced-footer .copyright a {
-    color: #1B7895;
+    color: white;
     text-decoration: none;
 }
 

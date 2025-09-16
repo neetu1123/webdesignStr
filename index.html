@@ -248,7 +248,7 @@
         id="banner-section"
         class="py-5 d-flex align-items-center justify-content-center"
         style="
-          background-image: url('WhatsApp Image 2025-09-16 at 10.46.07 PM.jpeg');
+          background-image: url('WhatsApp Image 2025-09-16 at 11.40.17 PM.jpeg');
           background-size: cover;
           background-position: center;
           min-height: 800px;
@@ -268,9 +268,14 @@
         <div class="container position-relative">
           <div class="row justify-content-center">
             <div class="col-lg-8 text-center text-white">
-              <h1 class="display-4 fw-bold mb-4">NO MORE AIRBNB DEPENDENCY</h1>
-              <p class="lead mb-4 text-white" style="color: white !important;">
-               Custom STR Websites, With PMS Integration
+              <h1
+                class="display-4 fw-bold mb-4"
+                style="color: white !important"
+              >
+                NO MORE AIRBNB DEPENDENCY
+              </h1>
+              <p class="lead mb-4 text-white" style="color: white !important">
+                Custom STR Websites, With PMS Integration
               </p>
             </div>
           </div>
@@ -278,20 +283,28 @@
       </section>
 
       <!-- About Section -->
-      <section class="about-section">
+      <section id="about-section" class="about-section">
         <div class="container">
           <div class="about-content">
             <div class="about-text">
-              <div style="font-weight: bold; font-size: 1.5rem">About Us</div>
-              <h2 class="dynalight-regular">Built With Purpose, Not Just Design</h2>
+              <h2 class="dynalight-regular">
+                Built With Purpose, Not Just Design
+              </h2>
 
               <p>
-               At WebDesignSTR, we design with purpose — not just pixels. We don’t believe in flashy templates or one-size-fits-all solutions. We focus on building websites that actually work — sites that bring clarity to your brand, guide your visitors to take action, and are easy for you to manage without relying on a developer for every small change. From clean code to thoughtful layout, everything we do is tailored to your goals — with zero fluff. You tell us what you need, and we’ll handle the rest.
+                At WebDesignSTR, we design with purpose — not just pixels. We
+                don’t believe in flashy templates or one-size-fits-all
+                solutions. We focus on building websites that actually work —
+                sites that bring clarity to your brand, guide your visitors to
+                take action, and are easy for you to manage without relying on a
+                developer for every small change. From clean code to thoughtful
+                layout, everything we do is tailored to your goals — with zero
+                fluff. You tell us what you need, and we’ll handle the rest.
               </p>
-             
-              <a href="/about.html" class="learn-more">
+
+              <!-- <a href="/about.html" class="learn-more">
                Learn More <i class="fas fa-arrow-right"></i>
-              </a>
+              </a> -->
             </div>
             <div class="about-illustration">
               <img
@@ -305,7 +318,6 @@
         </div>
       </section>
 
-      <!-- Services Section -->
       <!-- Services Section -->
       <section id="services-section" class="py-5">
         <div class="container">
@@ -674,6 +686,56 @@
           if (typeof initHeaderScroll === "function") {
             setTimeout(initHeaderScroll, 100); // Small delay to ensure DOM is updated
           }
+
+          // Initialize smooth scrolling for dynamically loaded header navigation
+          setTimeout(() => {
+            const navLinks = document.querySelectorAll(".nav-link");
+            if (navLinks) {
+              navLinks.forEach((link) => {
+                link.addEventListener("click", function (e) {
+                  e.preventDefault();
+
+                  // Close mobile menu if open
+                  const mobileMenu = document.getElementById("mobile-menu");
+                  if (mobileMenu && mobileMenu.style.display === "flex") {
+                    mobileMenu.style.opacity = "0";
+                    setTimeout(() => {
+                      mobileMenu.style.display = "none";
+                    }, 300);
+                  }
+
+                  const targetId = this.getAttribute("data-section");
+
+                  // Special case for "top"
+                  if (targetId === "top") {
+                    window.scrollTo({
+                      top: 0,
+                      behavior: "smooth",
+                    });
+                    return;
+                  }
+
+                  const targetElement = document.getElementById(targetId);
+
+                  if (targetElement) {
+                    // Get header height for offset
+                    const headerHeight =
+                      document.getElementById("main-header")?.offsetHeight || 0;
+
+                    const targetPosition =
+                      targetElement.getBoundingClientRect().top +
+                      window.pageYOffset;
+                    const offsetPosition = targetPosition - headerHeight;
+
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: "smooth",
+                    });
+                  }
+                });
+              });
+            }
+          }, 300); // Wait for header to fully load
         })
         .catch((error) => console.error("Error loading header:", error));
 
