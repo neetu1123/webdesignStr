@@ -46,64 +46,6 @@
         object-fit: cover;
       }
 
-      /* Marquee Animation Styles */
-      .marquee {
-        white-space: nowrap;
-        overflow: hidden;
-        width: 100%;
-      }
-
-      .marquee-content {
-        display: inline-block;
-        animation: marquee 30s linear infinite;
-        white-space: nowrap;
-      }
-
-      .marquee-reverse {
-        white-space: nowrap;
-        overflow: hidden;
-        width: 100%;
-      }
-
-      .marquee-content-reverse {
-        display: inline-block;
-        animation: marquee-reverse 30s linear infinite;
-        white-space: nowrap;
-      }
-
-      @keyframes marquee {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-
-      @keyframes marquee-reverse {
-        0% {
-          transform: translateX(-50%);
-        }
-        100% {
-          transform: translateX(0);
-        }
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .marquee-content,
-        .marquee-content-reverse {
-          animation-duration: 20s;
-        }
-      }
-
-      @media (max-width: 576px) {
-        .marquee-content,
-        .marquee-content-reverse {
-          animation-duration: 15s;
-        }
-      }
-
       /* Client Reviews Section Styles */
       .reviews-slider {
         position: relative;
@@ -231,6 +173,68 @@
       .faq-item.open .faq-icon {
         transform: rotate(45deg);
       }
+      /* About Section */
+      .about-section {
+        padding: 100px 0;
+        background-color: var(--background-light);
+      }
+
+      .about-content {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+      }
+
+      .about-illustration {
+        flex: 1;
+        text-align: center;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h2 {
+        font-size: 2.5rem;
+        color: var(--text-dark);
+        margin-bottom: 25px;
+        font-weight: 400;
+      }
+
+      .about-text h3 {
+        font-size: 1.5rem;
+        color: var(--grey-dark);
+        margin-bottom: 20px;
+        font-weight: 400;
+      }
+
+      .about-text p {
+        color: var(--grey-dark);
+        line-height: 1.8;
+        margin-bottom: 25px;
+        font-size: 1.05rem;
+      }
+
+      .learn-more {
+        color: var(--text-dark);
+        text-decoration: none;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.85rem;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 5px;
+      }
+
+      .learn-more:hover {
+        color: var(--grey-dark);
+        border-bottom: 1px solid var(--grey-dark);
+        transform: translateX(5px);
+      }
     </style>
   </head>
   <body>
@@ -240,31 +244,65 @@
     <!-- Main Content -->
     <div>
       <!-- Banner Section -->
-      <section id="banner-section" class="py-5" style="margin-top: 90px;">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-lg-6">
-              <!-- <p class="text-primary small mb-2">
-                CREATED BY ENVATO CREATIVE HEROES
-              </p> -->
-              <h3 class="h4 mb-3">Web Agency - WordPress Theme</h3>
-              <h1 class="display-4 fw-bold mb-4">
-                 NO MORE AIRBNB DEPENDENCY
-              </h1>
-              <p class="lead mb-4">
-                <strong>Custom STR Websites, With PMS Integration</strong>
+      <section
+        id="banner-section"
+        class="py-5 d-flex align-items-center justify-content-center"
+        style="
+          background-image: url('WhatsApp Image 2025-09-16 at 10.46.07 PM.jpeg');
+          background-size: cover;
+          background-position: center;
+          min-height: 800px;
+          position: relative;
+        "
+      >
+        <div
+          style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+          "
+        ></div>
+        <div class="container position-relative">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 text-center text-white">
+              <h1 class="display-4 fw-bold mb-4">NO MORE AIRBNB DEPENDENCY</h1>
+              <p class="lead mb-4 text-white" style="color: white !important;">
+               Custom STR Websites, With PMS Integration
               </p>
-              </p>
-              <a href="#portfolio" class="btn btn-primary gradient-trigger me-3"
-                >View Our Work</a
-              >
-              <a href="#contact" class="btn btn-outline-light">Contact Us</a>
             </div>
-            <div class="col-lg-6">
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="about-section">
+        <div class="container">
+          <div class="about-content">
+            <div class="about-text">
+              <div style="font-weight: bold; font-size: 1.5rem">About Us</div>
+              <h2 class="dynalight-regular">Built With Purpose, Not Just Design</h2>
+
+              <p>
+               At WebDesignSTR, we design with purpose — not just pixels. We don’t believe in flashy templates or one-size-fits-all solutions. We focus on building websites that actually work — sites that bring clarity to your brand, guide your visitors to take action, and are easy for you to manage without relying on a developer for every small change. From clean code to thoughtful layout, everything we do is tailored to your goals — with zero fluff. You tell us what you need, and we’ll handle the rest.
+              </p>
+              <p>
+                Since leaving over eight years ago, NWA has changed so much and
+                so we thought it was time we brought a better brand of
+                accommodations for all the new visitors!
+              </p>
+              <a href="#" class="learn-more">
+                more about our amazing team <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+            <div class="about-illustration">
               <img
-                src="assets/home/banner-big.png"
-                alt="Real Estate Banner"
+                src="WhatsApp Image 2025-09-16 at 11.40.28 PM.jpeg"
+                alt=""
                 class="img-fluid"
+                style="height: 450px; border-radius: 15px"
               />
             </div>
           </div>
@@ -276,16 +314,13 @@
       <section id="services-section" class="py-5">
         <div class="container">
           <div class="text-center mb-5">
-            <p class="text-primary small mb-2">Build With Incredible</p>
             <h2 class="display-5 fw-bold mb-4">Incredible Unique Features</h2>
           </div>
 
           <div class="row g-4">
             <!-- Feature 1 -->
             <div class="col-md-6 col-lg-3">
-              <div
-                class="card h-100 p-4 hover-card"
-              >
+              <div class="card h-100 p-4 hover-card">
                 <div
                   class="rounded-circle bg-dark d-flex align-items-center justify-content-center mb-4"
                   style="width: 64px; height: 64px; border: 1px solid #2c2c2c"
@@ -320,7 +355,7 @@
                     class="w-50 h-50"
                   />
                 </div>
-                <h3 class="h5 fw-bold mb-3"> Search Engine Optimization</h3>
+                <h3 class="h5 fw-bold mb-3">Search Engine Optimization</h3>
                 <p class="small">
                   We help your website rank on Google with strategic keyword
                   targeting, technical SEO, and content optimization to bring in
@@ -344,7 +379,7 @@
                     class="w-50 h-50"
                   />
                 </div>
-                <h3 class="h5 fw-bold mb-3"> Social Media Marketing</h3>
+                <h3 class="h5 fw-bold mb-3">Social Media Marketing</h3>
                 <p class="small">
                   Boost your brand's online presence with result-driven social
                   media campaigns, ad strategies, and growth marketing tailored
@@ -380,414 +415,26 @@
         </div>
       </section>
 
-      <!-- Pre-Built Pages Section -->
-      <section id="pre-built-pages" class="py-5 bg-gradient-blue-purple">
-        <div class="text-center mb-5">
-          <p class="text-blue-100 mb-2">Build With Incredible</p>
-          <h2 class="display-5 fw-bold mb-4">Pre-Built Inner Pages Ready</h2>
-        </div>
-
-        <!-- Forward scrolling marquee -->
-        <div class="position-relative overflow-hidden mb-4">
-          <div class="marquee d-flex">
-            <div class="marquee-content">
-              <!-- First set of images -->
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 1"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 2"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 3"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 4"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 5"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 6"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <!-- Duplicate for seamless looping -->
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 1"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 2"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 3"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 4"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 5"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 6"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Reverse scrolling marquee -->
-        <div class="position-relative overflow-hidden mt-4">
-          <div class="marquee-reverse d-flex">
-            <div class="marquee-content-reverse">
-              <!-- First set of images -->
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 7"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 8"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 9"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 10"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 11"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 12"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <!-- Duplicate for seamless looping -->
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 7"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 8"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 9"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 10"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 11"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-              <div class="d-inline-block me-4">
-                <div
-                  class="rounded-3 overflow-hidden"
-                  style="width: 300px; height: 225px"
-                >
-                  <img
-                    src="/assets/home/page-4.png"
-                    alt="Page Template 12"
-                    class="w-100 h-100 object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- Client Reviews Section -->
       <section id="client-reviews" class="py-5">
-        <div class="">
+        <div class="container">
           <div class="text-center mb-5">
             <p class="text-primary small mb-2">OUR CLIENTS SAY IT BEST</p>
             <h2 class="display-5 fw-bold mb-4">REVIEWS THAT SPEAK FOR US</h2>
           </div>
 
-          <div class="reviews-slider">
-            <div class="reviews-track">
-              <!-- Review Card 1 -->
-              <div class="review-card p-4">
+          <div class="row justify-content-center">
+            <!-- Review Card 1 -->
+            <div class="col-md-4 mb-4">
+              <div class="card h-100 shadow review-card p-4">
                 <div class="d-flex align-items-start mb-3">
                   <i
                     class="fas fa-quote-left me-3"
                     style="font-size: 1.5rem"
                   ></i>
                   <div>
-                    <h5 class="mb-1">Priya R.</h5>
-                    <p class="text-primary small">Marketing Consultant</p>
-                  </div>
-                  <i
-                    class="fas fa-quote-right ms-auto"
-                    style="font-size: 1.5rem"
-                  ></i>
-                </div>
-                <p class="fst-italic">
-                  "The team understood my business from day one and delivered a
-                  clean, modern website that matched my exact vision.
-                  Communication was smooth throughout the project. Highly
-                  recommend working with David and the team."
-                </p>
-              </div>
-
-              <!-- Review Card 2 -->
-              <div class="review-card p-4">
-                <div class="d-flex align-items-start mb-3">
-                  <i
-                    class="fas fa-quote-left me-3"
-                    style="font-size: 1.5rem"
-                  ></i>
-                  <div>
-                    <h5 class="mb-1">Daniel M.</h5>
-                    <p class="text-primary small">E-commerce Store Owner</p>
-                  </div>
-                  <i
-                    class="fas fa-quote-right ms-auto"
-                    style="font-size: 1.5rem"
-                  ></i>
-                </div>
-                <p class="fst-italic">
-                  "Steven was incredibly responsive even after the site was
-                  launched. From minor updates to technical questions, their
-                  support has been excellent. It's rare to find a web agency
-                  that actually sticks around after delivery."
-                </p>
-              </div>
-
-              <!-- Review Card 3 -->
-              <div class="review-card p-4">
-                <div class="d-flex align-items-start mb-3">
-                  <i
-                    class="fas fa-quote-left me-3"
-                    style="font-size: 1.5rem"
-                  ></i>
-                  <div>
-                    <h5 class="mb-1">Olivia J.</h5>
-                    <p class="text-primary small">Health Coach</p>
-                  </div>
-                  <i
-                    class="fas fa-quote-right ms-auto"
-                    style="font-size: 1.5rem"
-                  ></i>
-                </div>
-                <p class="fst-italic">
-                  "They didn't disappear after building the site — which I've
-                  seen happen with others. The after-sales service has been
-                  amazing. I've emailed for small updates and they handle them
-                  quickly without extra hassle."
-                </p>
-              </div>
-
-              <!-- Review Card 4 -->
-              <div class="review-card p-4">
-                <div class="d-flex align-items-start mb-3">
-                  <i
-                    class="fas fa-quote-left me-3"
-                    style="font-size: 1.5rem"
-                  ></i>
-                  <div>
-                    <h5 class="mb-1">Ahmad K.</h5>
-                    <p class="text-primary small">Small Business Owner</p>
+                    <h5 class="mb-1">Dennis B</h5>
+                    <!-- <p class="text-primary small">Marketing Consultant</p> -->
                   </div>
                   <i
                     class="fas fa-quote-right ms-auto"
@@ -801,41 +448,19 @@
                   changes without hesitation."
                 </p>
               </div>
+            </div>
 
-              <!-- Review Card 5 -->
-              <div class="review-card p-4">
+            <!-- Review Card 2 -->
+            <div class="col-md-4 mb-4">
+              <div class="card h-100 shadow review-card p-4">
                 <div class="d-flex align-items-start mb-3">
                   <i
                     class="fas fa-quote-left me-3"
                     style="font-size: 1.5rem"
                   ></i>
                   <div>
-                    <h5 class="mb-1">Lauren S.</h5>
-                    <p class="text-primary small">Fitness Trainer</p>
-                  </div>
-                  <i
-                    class="fas fa-quote-right ms-auto"
-                    style="font-size: 1.5rem"
-                  ></i>
-                </div>
-                <p class="fst-italic">
-                  "The website was delivered faster than expected, and even
-                  after launch, they kept checking in to make sure everything
-                  was working perfectly. Truly appreciated the ongoing support."
-                </p>
-              </div>
-
-              <!-- Duplicate reviews for continuous scrolling -->
-              <!-- Review Card 1 (duplicate) -->
-              <div class="review-card p-4">
-                <div class="d-flex align-items-start mb-3">
-                  <i
-                    class="fas fa-quote-left me-3"
-                    style="font-size: 1.5rem"
-                  ></i>
-                  <div>
-                    <h5 class="mb-1">Priya R.</h5>
-                    <p class="text-primary small">Marketing Consultant</p>
+                    <h5 class="mb-1">Luke J</h5>
+                    <!-- <p class="text-primary small">E-commerce Store Owner</p> -->
                   </div>
                   <i
                     class="fas fa-quote-right ms-auto"
@@ -849,40 +474,18 @@
                   recommend working with David and the team."
                 </p>
               </div>
+            </div>
 
-              <!-- Review Card 2 (duplicate) -->
-              <div class="review-card p-4">
+            <!-- Review Card 3 -->
+            <div class="col-md-4 mb-4">
+              <div class="card h-100 shadow review-card p-4">
                 <div class="d-flex align-items-start mb-3">
                   <i
                     class="fas fa-quote-left me-3"
                     style="font-size: 1.5rem"
                   ></i>
                   <div>
-                    <h5 class="mb-1">Daniel M.</h5>
-                    <p class="text-primary small">E-commerce Store Owner</p>
-                  </div>
-                  <i
-                    class="fas fa-quote-right ms-auto"
-                    style="font-size: 1.5rem"
-                  ></i>
-                </div>
-                <p class="fst-italic">
-                  "Steven was incredibly responsive even after the site was
-                  launched. From minor updates to technical questions, their
-                  support has been excellent. It's rare to find a web agency
-                  that actually sticks around after delivery."
-                </p>
-              </div>
-
-              <!-- Review Card 3 (duplicate) -->
-              <div class="review-card p-4">
-                <div class="d-flex align-items-start mb-3">
-                  <i
-                    class="fas fa-quote-left me-3"
-                    style="font-size: 1.5rem"
-                  ></i>
-                  <div>
-                    <h5 class="mb-1">Olivia J.</h5>
+                    <h5 class="mb-1">Jeramy M</h5>
                     <p class="text-primary small">Health Coach</p>
                   </div>
                   <i
@@ -891,10 +494,9 @@
                   ></i>
                 </div>
                 <p class="fst-italic">
-                  "They didn't disappear after building the site — which I've
-                  seen happen with others. The after-sales service has been
-                  amazing. I've emailed for small updates and they handle them
-                  quickly without extra hassle."
+                  "The website was delivered faster than expected, and even
+                  after launch, they kept checking in to make sure everything
+                  was working perfectly. Truly appreciated the ongoing support."
                 </p>
               </div>
             </div>
@@ -912,12 +514,9 @@
                   FREQUENTLY<br />
                   ASKED QUESTIONS
                 </h2>
-                <p>
-                  ANSWERS TO COMMON QUERIES WE OFTEN RECEIVE
-                </p>
+                <p>ANSWERS TO COMMON QUERIES WE OFTEN RECEIVE</p>
                 <div class="d-flex justify-content-end mt-4">
-                  <span
-                    class="bg-success px-4 py-2 rounded-pill fw-bold small"
+                  <span class="bg-success px-4 py-2 rounded-pill fw-bold small"
                     >GET TO KNOW MORE</span
                   >
                 </div>
@@ -958,7 +557,11 @@
                     <i class="fas fa-plus faq-icon"></i>
                   </button>
                   <div class="faq-answer py-3 d-none">
-                   using modern technologies like PHP (Laravel), JavaScript, React, Node.js, Angular, and more. We also work with core web technologies like HTML, CSS, and database systems as needed. Our team stays updated with the latest tools and frameworks to ensure
+                    using modern technologies like PHP (Laravel), JavaScript,
+                    React, Node.js, Angular, and more. We also work with core
+                    web technologies like HTML, CSS, and database systems as
+                    needed. Our team stays updated with the latest tools and
+                    frameworks to ensure
                   </div>
                 </div>
 
@@ -975,7 +578,13 @@
                     <i class="fas fa-plus faq-icon"></i>
                   </button>
                   <div class="faq-answer py-3 d-none">
-                   We design high-converting websites that help vacation rental owners take control of their bookings. Instead of relying solely on OTAs, we help you build your brand online with a fast, custom-coded website that reflects your property, showcases your value, and makes it easy for guests to book directly. Our focus is on performance, design, and long-term growth.
+                    We design high-converting websites that help vacation rental
+                    owners take control of their bookings. Instead of relying
+                    solely on OTAs, we help you build your brand online with a
+                    fast, custom-coded website that reflects your property,
+                    showcases your value, and makes it easy for guests to book
+                    directly. Our focus is on performance, design, and long-term
+                    growth.
                   </div>
                 </div>
 
@@ -993,7 +602,13 @@
                     <i class="fas fa-plus faq-icon"></i>
                   </button>
                   <div class="faq-answer py-3 d-none">
-                    Yes — we specialize in integrating custom websites with leading PMS platforms like Guesty, Hostaway, Lodgify, OwnerRez, and others. Whether it’s syncing availability, automating booking flow, or pulling dynamic content — we make sure your site connects smoothly with the tools you already use, so your guests get a seamless experience and you save time.
+                    Yes — we specialize in integrating custom websites with
+                    leading PMS platforms like Guesty, Hostaway, Lodgify,
+                    OwnerRez, and others. Whether it’s syncing availability,
+                    automating booking flow, or pulling dynamic content — we
+                    make sure your site connects smoothly with the tools you
+                    already use, so your guests get a seamless experience and
+                    you save time.
                   </div>
                 </div>
 
@@ -1010,7 +625,10 @@
                     <i class="fas fa-plus faq-icon"></i>
                   </button>
                   <div class="faq-answer py-3 d-none">
-                   The cost of a website can vary based on the scope, features, and level of customization required. Once we understand your goals and project requirements, we’ll provide you with a detailed, transparent quote — with no hidden
+                    The cost of a website can vary based on the scope, features,
+                    and level of customization required. Once we understand your
+                    goals and project requirements, we’ll provide you with a
+                    detailed, transparent quote — with no hidden
                   </div>
                 </div>
 
@@ -1077,52 +695,21 @@
     <script>
       console.log("Initializing client reviews and FAQ functionality...");
       document.addEventListener("DOMContentLoaded", function () {
-        // Reviews slider functionality
-        const reviewsTrack = document.querySelector(".reviews-track");
-        const reviewsSlider = document.querySelector(".reviews-slider");
+        // Review cards hover effect
+        const reviewCards = document.querySelectorAll(".review-card");
 
-        if (reviewsTrack && reviewsSlider) {
-          // Pause animation on hover
-          reviewsSlider.addEventListener("mouseenter", () => {
-            reviewsTrack.style.animationPlayState = "paused";
+        if (reviewCards) {
+          reviewCards.forEach((card) => {
+            card.addEventListener("mouseenter", () => {
+              card.style.transform = "translateY(-5px)";
+              card.style.boxShadow = "0 10px 20px rgba(0, 0, 0, 0.15)";
+            });
+
+            card.addEventListener("mouseleave", () => {
+              card.style.transform = "translateY(0)";
+              card.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.1)";
+            });
           });
-
-          // Resume animation on mouse leave
-          reviewsSlider.addEventListener("mouseleave", () => {
-            reviewsTrack.style.animationPlayState = "running";
-          });
-
-          // Ensure the animation calculation is correct for responsive displays
-          const updateReviewsAnimation = () => {
-            const cards = reviewsTrack.querySelectorAll(".review-card");
-            if (cards.length > 0) {
-              const cardWidth = cards[0].offsetWidth;
-              const cardGap = 24; // 1.5rem in pixels
-              const totalWidth = (cardWidth + cardGap) * (cards.length / 2); // Half the cards (original set)
-
-              // Update the animation using inline style instead of modifying stylesheet rules
-              reviewsTrack.style.animation = "none"; // Reset animation
-              setTimeout(() => {
-                // Create a style element with our custom keyframe
-                const styleEl = document.createElement("style");
-                styleEl.textContent = `
-                                @keyframes slideReviews {
-                                    0% { transform: translateX(0); }
-                                    100% { transform: translateX(-${totalWidth}px); }
-                                }
-                            `;
-                document.head.appendChild(styleEl);
-
-                // Re-apply the animation
-                reviewsTrack.style.animation =
-                  "slideReviews 30s linear infinite";
-              }, 10);
-            }
-          };
-
-          // Call once on load and on window resize
-          updateReviewsAnimation();
-          window.addEventListener("resize", updateReviewsAnimation);
         }
 
         // FAQ functionality
